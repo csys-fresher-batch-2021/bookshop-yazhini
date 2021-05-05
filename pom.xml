@@ -6,8 +6,8 @@
 	<artifactId>app</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>YourProjectName</name>
-	<url>https://github.com/csys-fresher-batch-2021/yourreponame</url>
+	<name>bookshop-yazhini</name>
+	<url>https://github.com/csys-fresher-batch-2021/bookshop-yazhini</url>
 
 	<properties>
 		<maven.compiler.target>1.8</maven.compiler.target>
