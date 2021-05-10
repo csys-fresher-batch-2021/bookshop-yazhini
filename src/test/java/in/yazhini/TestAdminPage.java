@@ -5,8 +5,6 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import in.yazhini.service.UserService;
-
 public class TestAdminPage {
 	/** Declare the Valid Admin Details **/
 	@Test
