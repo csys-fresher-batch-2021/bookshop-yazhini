@@ -1,17 +1,20 @@
 package in.yazhini;
 
 import static org.junit.Assert.assertFalse;
+
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
+
+import in.yazhini.validator.AdminService;
 
 public class TestAdminPage {
 	/** Declare the Valid Admin Details **/
 	@Test
 	public void testCase1() {
 		String userName = "Yazhini";
-		String userId = "Admin123";
-		boolean login = UserService.login(userName, userId);
+		String password = "Admin123";
+		boolean login = AdminService.login(userName, password);
 		assertTrue(login);
 	}
 
@@ -19,8 +22,8 @@ public class TestAdminPage {
 	@Test
 	public void testCase2() {
 		String userName = "Yazhini";
-		String userId = "1234567890";
-		boolean login=UserService.login(userName, userId);
+		String password = "1234567890";
+		boolean login = AdminService.login(userName, password);
 		assertFalse(login);
 	}
 
