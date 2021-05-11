@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html> 
+<html xml:lang="java">
 <head>
 <title>BookApp</title>
 </head>
