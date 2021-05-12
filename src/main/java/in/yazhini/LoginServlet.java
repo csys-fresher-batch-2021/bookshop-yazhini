@@ -2,8 +2,6 @@ package in.yazhini;
 
 import java.io.IOException;
 
-
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,8 +13,8 @@ import in.yazhini.validator.AdminService;
 /**
  * Servlet implementation class Login_actionSelvlet
  */
-@WebServlet("/Login_actionSelvlet")
-public class LoginActionSelvlet extends HttpServlet {
+@WebServlet("/LoginServlet")
+public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -25,9 +23,9 @@ public class LoginActionSelvlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		// response.getWriter().append("Served at: ").append(request.getContextPath());
-		
+
 		String username = request.getParameter("name");
 		String password = request.getParameter("password");
 		String role = request.getParameter("role");
