@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xml:lang="java">
+<html lang=en>
 <head>
 <title>MyApp</title>
 </head>

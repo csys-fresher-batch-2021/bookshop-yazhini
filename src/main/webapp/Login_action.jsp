@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html xml:lang="java">
+<html lang="java">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -15,7 +15,9 @@
 <%
 String username  = request.getParameter("name");
 String password = request.getParameter("password");
-boolean valid = AdminService.login(username, password);
+String role=request.getParameter("role");
+
+boolean valid = AdminService.login(username, password,role);
 if(valid){
 	out.println("Successfully LoggedIn");
 }
