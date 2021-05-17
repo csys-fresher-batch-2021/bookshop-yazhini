@@ -14,17 +14,16 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/LogoutServlet")
 public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-      
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
+
 		HttpSession session = request.getSession();
 		session.removeAttribute("LOGGED_IN_USER");
-		//System.out.println("##### Logout Servlet - clear session values");
+
 		response.sendRedirect("Login.jsp");
 
 	}
-	}
-
-	
+}

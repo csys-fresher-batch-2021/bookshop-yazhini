@@ -22,11 +22,11 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+
 			throws ServletException, IOException {
 
-		// response.getWriter().append("Served at: ").append(request.getContextPath());
-		// System.out.println("######## Login Servlet ###########");
 		String username = request.getParameter("name");
 		String password = request.getParameter("password");
 		String role = request.getParameter("role");
@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet {
 		if (role.equals("ADMIN")) {
 			boolean valid1 = AdminService.adminLogin(username, password, role);
 			if (valid1) {
-				// System.out.println("Successfully LoggedIn");
+
 				HttpSession session = request.getSession();
 				session.setAttribute("LOGGED_IN_USER", username);
 				session.setAttribute("ROLE", "ADMIN");
@@ -44,22 +44,21 @@ public class LoginServlet extends HttpServlet {
 				String message = "Invalid Login Credentials";
 				response.sendRedirect("Login.jsp?errorMessage=" + message);
 			}
-		}else {
-				boolean valid2 = AdminService.customerLogin(username, password, role);
-				if (valid2) {
-					//System.out.println("Successfully LoggedIn");
-					HttpSession session = request.getSession();
-					session.setAttribute("LOGGED_IN_USER", username);
-					session.setAttribute("ROLE", "CUSTOMER");
-					response.sendRedirect("ListBookDetails.jsp");
-				} else {
+		} else {
+			boolean valid2 = AdminService.customerLogin(username, password, role);
+			if (valid2) {
 
-					String message = "Invalid Login Credentials";
-					response.sendRedirect("Login.jsp?errorMessage=" + message);
+				HttpSession session = request.getSession();
+				session.setAttribute("LOGGED_IN_USER", username);
+				session.setAttribute("ROLE", "CUSTOMER");
+				response.sendRedirect("ListBookDetails.jsp");
+			} else {
 
-				}
+				String message = "Invalid Login Credentials";
+				response.sendRedirect("Login.jsp?errorMessage=" + message);
 
 			}
+
 		}
 	}
-
+}

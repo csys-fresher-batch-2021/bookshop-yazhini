@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.yazhini.model.BookDetails;
-import in.yazhini.validator.AdminUse;
 
 public class TestBookDetails {
 	private TestBookDetails() {

@@ -21,14 +21,14 @@
 					<th id="AuthorName">AuthorName</th>
 					<th id="BookPrice">BookPrice</th>
 					<th id="NoOfBooks">NoOfBooks</th>
-			
-					
+
+
 				</tr>
 			</thead>
 			<tbody>
 				<!-- Scriptlets(java code for display the list of case types) -->
 				<%
-				List <BookDetails> bookList  = TestBookDetails.getBookList();
+				List<BookDetails> bookList = TestBookDetails.getBookList();
 				int i = 1;
 				for (BookDetails books : bookList) {
 				%>
@@ -36,16 +36,18 @@
 					<td><%=i%></td>
 					<td><%=books.getBookName()%></td>
 					<td><%=books.getAuthorName()%></td>
-					<td>Rs.<%=books.getBookPrice()%>/-</td>
+					<td>Rs.<%=books.getBookPrice()%>/-
+					</td>
 					<td><%=books.getNoOfBooks()%></td>
-			
+
 				</tr>
 				<%
 				i++;
 				}
 				%>
-				</table>
-				</main>
-		
+			
+		</table>
+	</main>
+
 </body>
 </html>
