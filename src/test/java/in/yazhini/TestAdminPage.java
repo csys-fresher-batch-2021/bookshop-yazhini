@@ -2,6 +2,7 @@ package in.yazhini;
 
 import static org.junit.Assert.assertFalse;
 
+
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -15,22 +16,24 @@ public class TestAdminPage {
 	 * @param role
 	 **/
 	@Test
-	public void testCase1() {
+	public void adminValidation() {
 		String userName = "Yazhini";
 		String password = "Admin123";
 		String role = "ADMIN";
-		boolean login = AdminService.login(userName, password, role);
+		boolean login = AdminService.adminLogin(userName, password, role);
 		assertTrue(login);
 	}
 
 	/** Declare the InValid Admin Details **/
 	@Test
-	public void testCase2() {
-		String userName = "Yazhini";
-		String password = "1234567890";
-		String role = "Customer";
-		boolean login = AdminService.login(userName, password, role);
-		assertFalse(login);
+	public void customerValidation() {
+		String userName = "Kani";
+		String password = "kani123";
+		String role = "CUSTOMER";
+		boolean login = AdminService.customerLogin(userName, password, role);
+		assertTrue(login);
 	}
 
 }
+
+

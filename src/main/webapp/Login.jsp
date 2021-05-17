@@ -6,6 +6,7 @@
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
+
 		<h2>LOGIN PAGE</h2>
 		<%
 		String errorMessage = request.getParameter("errorMessage");
@@ -14,7 +15,7 @@
 		}
 		%>
 		
-		<form action="Login_action.jsp" method="post">
+		<form action="LoginServlet" method="Post">
 		<br /> <label for="name">UserName: </label> <input type="text"
 			name="name" id="name" placeholder="userName" size="20" autofocus
 			required> <br>

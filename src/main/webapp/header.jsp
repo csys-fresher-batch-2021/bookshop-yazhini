@@ -1,6 +1,10 @@
 <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="assets/css/fontawesome.min.css">
 <link rel="stylesheet" href="assets/css/style.css">
+<%
+String loggedInUsername = (String)session.getAttribute("LOGGED_IN_USER");
+String role = (String) session.getAttribute("ROLE");
+%>
 
 <header>
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -14,9 +18,17 @@
       <li class="nav-item active">
         <a class="nav-link" href="index.jsp">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="Listbooks.jsp">Books</a>
+      
+      <% if (loggedInUsername != null && role != null && role.equalsIgnoreCase("ADMIN")){ %>
+       <li class="nav-item">
+        <a class="nav-link" href="ListBookDetails.jsp">Add Books</a>
       </li>
+      <%} %>
+      <% if (loggedInUsername != null && role != null && role.equalsIgnoreCase("CUSTOMER")){ %>
+       <li class="nav-item">
+        <a class="nav-link" href="ListBookDetails.jsp">Books</a>
+      </li>
+      <%} %>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
         <div class="dropdown-menu" aria-labelledby="dropdownId">
@@ -26,12 +38,21 @@
       </li>
     </ul>
      <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+     <% if (loggedInUsername == null){ %>
       <li class="nav-item active">
         <a class="nav-link" href="Login.jsp">Login</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Register</a>
       </li>
+      <%} else { %>
+         <li class="nav-item">
+        <a class="nav-link" href="#">Welcome <%=loggedInUsername %></a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="LogoutServlet">Logout</a>
+      </li>
+      <%} %>
       </ul>
    
   </div>
