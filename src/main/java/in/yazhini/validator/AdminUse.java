@@ -10,27 +10,27 @@ public class AdminUse {
 
 	}
 
-	static List<BookDetails> bookLists = new ArrayList<>();
+	static List<BookDetails> bookList = new ArrayList<>();
 
 	// For purpose of Add the BookDetails to the Admin//
 	public static void addBookDetails(BookDetails... books) {
 
 		for (BookDetails bookDetails : books) {
-			bookLists.add(bookDetails);
+			bookList.add(bookDetails);
 
 		}
 	}
 
 	// Count the Number of books
 	public static int noOfBookName() {
-		return bookLists.size();
+		return bookList.size();
 
 	}
 
 	public static void displayBooks() {
 
 		// R2: Display BookDetails
-		for (BookDetails bookName : bookLists) {
+		for (BookDetails bookName : bookList) {
 			System.out.println(bookName);
 		}
 	}
