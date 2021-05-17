@@ -32,7 +32,7 @@ public class AdminUse {
 		// R2: Display BookDetails
 
 		for (BookDetails bookName : bookLists) {
-			System.out.println(bookName);
+			System.out.println("bookName");
 		}
 	}
 }

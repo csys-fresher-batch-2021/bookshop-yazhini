@@ -2,7 +2,7 @@
 <%@page import="in.yazhini.service.TestBookDetails"%>
 <%@page import="in.yazhini.model.BookDetails"%>
 <!DOCTYPE html>
-<html>
+<html lang=en>
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
