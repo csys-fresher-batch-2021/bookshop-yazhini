@@ -10,6 +10,6 @@ jobs:
       - uses: actions/checkout@v2
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_api_key: ${{secrets.68bed9f9-6022-4f28-bf15-db1a7777349e}}
           heroku_app_name: "onlinebookshop-1" #Must be unique in Heroku
           heroku_email: "jkyazhini2000@gmail.com"
