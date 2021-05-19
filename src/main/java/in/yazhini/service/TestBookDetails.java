@@ -2,14 +2,17 @@ package in.yazhini.service;
 
 import java.util.ArrayList;
 
+
 import java.util.List;
 
 import in.yazhini.model.BookDetails;
+
 
 public class TestBookDetails {
 	private TestBookDetails() {
 	}
 
+//add the book details in standard
 	private static final List<BookDetails> bookList = new ArrayList<>();
 	static {
 
@@ -27,4 +30,18 @@ public class TestBookDetails {
 	public static List<BookDetails> getBookList() {
 		return bookList;
 	}
+
+//Add the book details in dynamically
+	//public static boolean addBook(String bookName, String authorName, float bookPrice, float noOfBooks) {
+
+		//if (AddBookValidator.isValidBookName(bookName) && (AddBookValidator.isValidAuthorName(authorName)
+				//&& (AddBookValidator.isValidBookPrice(bookPrice) && (AddBookValidator.isValidNoOfBooks(noOfBooks))))) {
+
+			//BookDetails newBookList = new BookDetails(bookName, authorName, bookPrice,noOfBooks);
+			//bookList.add(newBookList);
+			//return true;
+		//}
+		//return false;
+
+	//}
 }
