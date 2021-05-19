@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.yazhini.model.BookDetails;
+import in.yazhini.validator.AddBookValidator;
 
 public class TestBookDetails {
 	private TestBookDetails() {
@@ -27,4 +28,17 @@ public class TestBookDetails {
 	public static List<BookDetails> getBookList() {
 		return bookList;
 	}
+	public static boolean addBook(String bookName,String authorName,float bookPrice, float noOfBooks) {
+		boolean isAdded=false;
+		if ((AddBookValidator.isValidBookName(bookName)) && (AddBookValidator.isValidAuthorName(bookName))
+				&&(AddBookValidator.isValidBookPrice(bookPrice))&&(AddBookValidator.isValidNoOfBooks(noOfBooks))){
+		
+			BookDetails books = new BookDetails(bookName,authorName,bookPrice,noOfBooks);
+				bookList.add(books);
+			
+		isAdded=true;
+		}
+		return isAdded;
+	}
+ 
 }
