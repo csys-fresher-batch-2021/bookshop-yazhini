@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.yazhini.model.BookDetails;
+import in.yazhini.validator.AddBookValidator;
 
 public class TestBookDetails {
 	private TestBookDetails() {
@@ -13,13 +14,13 @@ public class TestBookDetails {
 	private static final List<BookDetails> bookList = new ArrayList<>();
 	static {
 
-		BookDetails book1 = new BookDetails("TamilNovels", "Thiruvalluvar", 200f, 10f);
+		BookDetails book1 = new BookDetails("TamilNovels", "Thiruvalluvar", 200f,  10);
 		bookList.add(book1);
-		BookDetails book2 = new BookDetails("English Novels", "George Orwell", 250f, 20f);
+		BookDetails book2 = new BookDetails("English Novels", "George Orwell", 250f, 20);
 		bookList.add(book2);
-		BookDetails book3 = new BookDetails("Mathematical Discoveries", "Srinivasa Ramanujan", 300f, 10f);
+		BookDetails book3 = new BookDetails("Mathematical Discoveries", "Srinivasa Ramanujan", 300f, 10);
 		bookList.add(book3);
-		BookDetails book4 = new BookDetails("GK-India at Risk", "Jaswant Singh", 220f, 30f);
+		BookDetails book4 = new BookDetails("GK-India at Risk", "Jaswant Singh", 220f, 30);
 		bookList.add(book4);
 
 	}
@@ -27,4 +28,17 @@ public class TestBookDetails {
 	public static List<BookDetails> getBookList() {
 		return bookList;
 	}
+	public static boolean addBook(String bookName,String authorName,float bookPrice, int noOfBooks) {
+		boolean isAdded=false;
+		if ((AddBookValidator.isValidBookName(bookName)) && (AddBookValidator.isValidAuthorName(bookName))
+				&&(AddBookValidator.isValidBookPrice(bookPrice))&&(AddBookValidator.isValidNoOfBooks(noOfBooks))){
+		
+			BookDetails books = new BookDetails(bookName,authorName,bookPrice,noOfBooks);
+				bookList.add(books);
+			
+		isAdded=true;
+		}
+		return isAdded;
+	}
+ 
 }
