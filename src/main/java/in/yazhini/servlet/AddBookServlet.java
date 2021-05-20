@@ -31,7 +31,7 @@ public class AddBookServlet extends HttpServlet {
 		String bookPrice = request.getParameter("bookPrice");
 		String noOfBooks = request.getParameter("noOfBooks");
 		Float bookPrice1 = Float.parseFloat(bookPrice);
-		Float noOfBooks1 = Float.parseFloat(noOfBooks);
+		int noOfBooks1=Integer.parseInt(noOfBooks);  
 
 		boolean isAdded = TestBookDetails.addBook(bookName, authorName, bookPrice1, noOfBooks1);
 

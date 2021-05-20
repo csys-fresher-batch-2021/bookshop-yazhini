@@ -42,7 +42,7 @@ public class AddBookValidator {
 		return isValid;
 	}
 	
-	public static boolean isValidNoOfBooks(Float noOfBooks) {
+	public static boolean isValidNoOfBooks(int noOfBooks) {
 		boolean isValid = false;
 		if (noOfBooks > 0){
 			isValid = true;

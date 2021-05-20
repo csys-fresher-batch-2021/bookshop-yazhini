@@ -4,7 +4,7 @@ public class BookDetails {
 	private String bookName;
 	private String authorName;
 	private Float bookPrice;
-	private Float noOfBooks;
+	private int noOfBooks;
 
 	public String getBookName() {
 		return bookName;
@@ -18,11 +18,11 @@ public class BookDetails {
 		return bookPrice;
 	}
 
-	public Float getNoOfBooks() {
+	public int getNoOfBooks() {
 		return noOfBooks;
 	}
 
-	public BookDetails(String bookName, String authorName, Float bookPrice, Float noOfBooks) {
+	public BookDetails(String bookName, String authorName, Float bookPrice, int noOfBooks) {
 		super();
 		this.bookName = bookName;
 		this.authorName = authorName;
