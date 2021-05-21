@@ -39,7 +39,7 @@
 					<td>Rs.<%=books.getBookPrice()%>/-
 					</td>
 					<td><%=books.getNoOfBooks()%></td>
-
+                   
 				</tr>
 				<%
 				i++;

@@ -17,7 +17,7 @@
 
 		<form action="LoginServlet" method="Post">
 			<br /> <label for="name">UserName: </label> <input type="text"
-				name="name" id="name" placeholder="userName" size="20" autofocus
+				name="name" id="name" placeholder="UserName" size="20" autofocus
 				required> <br> <br> <label for="name">Password:
 			</label> <input type="Password" name="password" id="password"
 				placeholder="Password" size="20" required> <br> <br>
