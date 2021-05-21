@@ -8,38 +8,35 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import in.yazhini.service.TestBookDetails;
+import in.yazhini.service.CustomerSelectBooks;
 
 /**
- * Servlet implementation class AddBookServlet
+ * Servlet implementation class CustomerSelectServlet
  */
-@WebServlet("/AddBookServlet")
-public class AddBookServlet extends HttpServlet {
+@WebServlet("/CustomerSelectServlet")
+public class CustomerSelectServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String MSG = "ListBookDetails.jsp?errorMessage=";
+	private static final String MSG = "CustomerShop.jsp?errorMessage=";
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String bookName = request.getParameter("bookName");
-		String authorName = request.getParameter("authorName");
-		String bookPrice = request.getParameter("bookPrice");
 		String noOfBooks = request.getParameter("noOfBooks");
-		Float bookPrice1 = Float.parseFloat(bookPrice);
 		int noOfBooks1 = Integer.parseInt(noOfBooks);
 
-		boolean isAdded = TestBookDetails.addBook(bookName, authorName, bookPrice1, noOfBooks1);
+		boolean isAdded = CustomerSelectBooks.validateNoOfBooks(bookName, noOfBooks1);
 
 		if (isAdded) {
 			String errorMessage = "Successfully Added";
-			response.sendRedirect(MSG + errorMessage);
+			response.sendRedirect("Bill.jsp?errorMessage=" + errorMessage);
 		} else {
-			String errorMessage = "Invalid BookName or The BookName Already Added";
+			String errorMessage = "Invalid BookName or NoOfBooks is NotAvailable";
 			response.sendRedirect(MSG + errorMessage);
 		}
 	}
+
 }

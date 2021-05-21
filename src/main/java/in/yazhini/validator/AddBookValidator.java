@@ -19,6 +19,7 @@ public class AddBookValidator {
 		}
 		return isValid;
 	}
+
 	public static boolean isValidAuthorName(String authorName) {
 		boolean isValid = false;
 		if (!authorName.equals("null") && !authorName.trim().equals("")) {
@@ -26,7 +27,6 @@ public class AddBookValidator {
 		}
 		return isValid;
 	}
-	
 
 	/**
 	 * check whether cost is greater than 0
@@ -36,21 +36,18 @@ public class AddBookValidator {
 	 */
 	public static boolean isValidBookPrice(Float bookPrice) {
 		boolean isValid = false;
-		if (bookPrice > 0){
+		if (bookPrice > 0) {
 			isValid = true;
 		}
 		return isValid;
 	}
-	
+
 	public static boolean isValidNoOfBooks(int noOfBooks) {
 		boolean isValid = false;
-		if (noOfBooks > 0){
+		if (noOfBooks > 0) {
 			isValid = true;
 		}
 		return isValid;
 
 	}
 }
-	
-			
-
