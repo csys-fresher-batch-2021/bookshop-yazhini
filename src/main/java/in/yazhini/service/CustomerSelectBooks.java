@@ -2,14 +2,13 @@ package in.yazhini.service;
 
 public class CustomerSelectBooks {
 	// Store the BookName in Array
-	public static boolean validateBookName(String bookName) {
+	public static boolean checkBookName(String bookName) {
 		String[] arrayOfbookName = { "TamilNovels", "EnglishNovels", "MathsDiscoveries", "GKIndiaAtRisk" };
 		for (int i = 0; i < arrayOfbookName.length; i++) {
 			String userName = arrayOfbookName[i];
 			if (bookName.equalsIgnoreCase(userName)) {
 				return true;
-			} else {
-				continue;
+
 			}
 		}
 		return false;
@@ -21,31 +20,31 @@ public class CustomerSelectBooks {
 		boolean isValid = false;
 		switch (bookName) {
 		case "TamilNovels": {
-			if (noOfBooks <=10 && noOfBooks > 0) {
+			if (noOfBooks <= 10 && noOfBooks > 0) {
 				isValid = true;
-				break;
 			}
 		}
+			break;
 		case "EnglishNovels": {
 			if (noOfBooks <= 20 && noOfBooks > 0) {
 				isValid = true;
-				break;
 			}
 		}
+			break;
 		case "MathematicsDiscoveries": {
 			if (noOfBooks <= 10 && noOfBooks > 0) {
 				isValid = true;
-				break;
 			}
 		}
+			break;
 		case "GKIndiaAtRisk": {
 			if (noOfBooks <= 20 && noOfBooks > 0) {
 				isValid = true;
-				break;
 			}
+		}
+			break;
+		}
 
-		}
-		}
 		return isValid;
 	}
 }

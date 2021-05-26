@@ -11,10 +11,11 @@ public class TestBookDetails {
 	private TestBookDetails() {
 	}
 
+//list of  bookdetails to stored in array list
 	private static final List<BookDetails> bookList = new ArrayList<>();
 	static {
 
-		BookDetails book1 = new BookDetails("TamilNovels", "Thiruvalluvar", 200f,  10);
+		BookDetails book1 = new BookDetails("TamilNovels", "Thiruvalluvar", 200f, 10);
 		bookList.add(book1);
 		BookDetails book2 = new BookDetails("EnglishNovels", "George Orwell", 250f, 20);
 		bookList.add(book2);
@@ -28,18 +29,38 @@ public class TestBookDetails {
 	public static List<BookDetails> getBookList() {
 		return bookList;
 	}
-	public static boolean addBook(String bookName,String authorName,float bookPrice, int noOfBooks) {
-		boolean isAdded=false;
+
+//add some books in a book list
+	public static boolean addBook(String bookName, String authorName, float bookPrice, int noOfBooks) {
+		boolean isAdded = false;
 		if ((AddBookValidator.isValidBookName(bookName)) && (AddBookValidator.isValidAuthorName(bookName))
-				&&(AddBookValidator.isValidBookPrice(bookPrice))&&(AddBookValidator.isValidNoOfBooks(noOfBooks))){
-		
-			BookDetails books = new BookDetails(bookName,authorName,bookPrice,noOfBooks);
-				bookList.add(books);
-				
-		isAdded=true;
+				&& (AddBookValidator.isValidBookPrice(bookPrice)) && (AddBookValidator.isValidNoOfBooks(noOfBooks))) {
+
+			BookDetails books = new BookDetails(bookName, authorName, bookPrice, noOfBooks);
+			bookList.add(books);
+
+			isAdded = true;
 		}
 		return isAdded;
 	}
-	
-}
 
+//delete some book in booklist
+	public static boolean deleteBook(String bookName) {
+
+		boolean isDeleted = false;
+		BookDetails searchProduct = null;
+		for (BookDetails books : bookList) {
+
+			if ((books.getBookName().equalsIgnoreCase(bookName))) {
+				searchProduct = books;
+				break;
+			}
+		}
+		if (searchProduct != null) {
+			bookList.remove(searchProduct);
+			isDeleted = true;
+		}
+		return isDeleted;
+	}
+
+}

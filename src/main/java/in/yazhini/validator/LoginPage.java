@@ -1,14 +1,15 @@
 
 package in.yazhini.validator;
 
-public class AdminService {
+public class LoginPage {
 
-	// validate the data in Adminuser
+	// create a costructor to theclass
 
-	private AdminService() {
+	private LoginPage() {
 
 	}
 
+//admin login to the standard input
 	public static boolean adminLogin(String userName, String password, String role) {
 		boolean isAdmin = false;
 		if (userName.trim().equals("Yazhini") && password.trim().equals("Admin123") && role.trim().equals("ADMIN")) {
@@ -17,12 +18,12 @@ public class AdminService {
 		return isAdmin;
 	}
 
+// customer login to the standard input
 	public static boolean customerLogin(String userName, String password, String role) {
 		boolean isCustomer = false;
 		if (userName.trim().equals("Kani") && password.trim().equals("kani123") && role.trim().equals("CUSTOMER")) {
 			isCustomer = true;
 		}
 		return isCustomer;
-
 	}
 }

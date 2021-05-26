@@ -10,7 +10,7 @@ public class SelectBooks {
 
 	public static ArrayList<String> Validates(String bookName, String authorName, Integer noOfBooks) {
 		ArrayList<String> errors = new ArrayList<String>();
-		boolean bookNameValidation = CustomerSelectBooks.validateBookName(bookName);
+		boolean bookNameValidation = CustomerSelectBooks.checkBookName(bookName);
 		if (bookNameValidation == false)
 		// To check the input is proper or not that can be uesd to Boolean Validation//
 		{
