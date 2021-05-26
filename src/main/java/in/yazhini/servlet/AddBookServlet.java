@@ -44,7 +44,7 @@ public class AddBookServlet extends HttpServlet {
 			}
 		} catch (IOException e) {
 			
-			e.printStackTrace();
+		
 		}
 	}
 }

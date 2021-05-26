@@ -1,7 +1,8 @@
 package in.yazhini.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,9 +26,9 @@ public class DeleteBookServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		PrintWriter out = response.getWriter();
+	
 		String bookName = request.getParameter("BookName");
-		out.println(bookName);
+	
 
 		boolean isDeleted= TestBookDetails.deleteBook(bookName);
 		try {
@@ -40,7 +41,7 @@ public class DeleteBookServlet extends HttpServlet {
 			}
 		} catch (IOException e) {
 
-			e.printStackTrace();
+		
 		}
 	}
 }
