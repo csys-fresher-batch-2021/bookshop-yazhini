@@ -43,7 +43,7 @@ public class AddBookServlet extends HttpServlet {
 				response.sendRedirect("Modify.jsp?errorMessage=" + errorMessage);
 			}
 		} catch (IOException e) {
-			
+			e.printStackTrace();
 		
 		}
 	}

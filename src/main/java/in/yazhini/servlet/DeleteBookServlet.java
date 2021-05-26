@@ -3,7 +3,6 @@ package in.yazhini.servlet;
 import java.io.IOException;
 
 
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,9 +25,8 @@ public class DeleteBookServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-	
 		String bookName = request.getParameter("BookName");
-	
+
 
 		boolean isDeleted= TestBookDetails.deleteBook(bookName);
 		try {
@@ -40,8 +38,10 @@ public class DeleteBookServlet extends HttpServlet {
 				response.sendRedirect("Modify.jsp?errorMessge="+ errorMessage);
 			}
 		} catch (IOException e) {
-
+			e.printStackTrace();
+		}
+             
 		
 		}
 	}
-}
+
