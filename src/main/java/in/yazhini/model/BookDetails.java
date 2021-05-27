@@ -6,6 +6,7 @@ public class BookDetails {
 	private Float bookPrice;
 	private int noOfBooks;
 
+//create a constructor to the details
 	public String getBookName() {
 		return bookName;
 	}

@@ -20,6 +20,13 @@ public class AddBookValidator {
 		return isValid;
 	}
 
+	/**
+	 * validate if author name is null or not & if author name is empty space or not
+	 * 
+	 * 
+	 * @param bookName
+	 * @return
+	 */
 	public static boolean isValidAuthorName(String authorName) {
 		boolean isValid = false;
 		if (!authorName.equals("null") && !authorName.trim().equals("")) {
@@ -42,6 +49,12 @@ public class AddBookValidator {
 		return isValid;
 	}
 
+	/**
+	 * check whether NoOfBook is greater than 0
+	 * 
+	 * @param cost
+	 * @return
+	 */
 	public static boolean isValidNoOfBooks(int noOfBooks) {
 		boolean isValid = false;
 		if (noOfBooks > 0) {
@@ -50,4 +63,6 @@ public class AddBookValidator {
 		return isValid;
 
 	}
+	
 }
+

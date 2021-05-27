@@ -2,6 +2,7 @@ package in.yazhini.servlet;
 
 import java.io.IOException;
 
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,7 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import in.yazhini.validator.AdminService;
+
+import in.yazhini.validator.LoginPage;
 
 /**
  * Servlet implementation class Login_actionSelvlet
@@ -32,7 +34,7 @@ public class LoginServlet extends HttpServlet {
 		String role = request.getParameter("role");
 
 		if (role.equals("ADMIN")) {
-			boolean valid1 = AdminService.adminLogin(username, password, role);
+			boolean valid1 = LoginPage.adminLogin(username, password, role);
 			if (valid1) {
 
 				HttpSession session = request.getSession();
@@ -45,7 +47,7 @@ public class LoginServlet extends HttpServlet {
 				response.sendRedirect("Login.jsp?errorMessage=" + message);
 			}
 		} else {
-			boolean valid2 = AdminService.customerLogin(username, password, role);
+			boolean valid2 = LoginPage.customerLogin(username, password, role);
 			if (valid2) {
 
 				HttpSession session = request.getSession();

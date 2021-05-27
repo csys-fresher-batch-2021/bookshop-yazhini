@@ -23,10 +23,11 @@
 				placeholder="Password" size="20" required> <br> <br>
 			<input type="radio" name="role" id="A" required value="ADMIN">ADMIN
 			<br /> <input type="radio" name="role" id="C" required
-				value="CUSTOMER">CUSTOMER<br>
-			<br />
+				value="CUSTOMER">CUSTOMER<br> <br />
 
-			<button style="color: red">LOGIN</button>
+			<button class="btn btn-primary">LOGIN</button>
+
+
 		</form>
 	</main>
 </body>

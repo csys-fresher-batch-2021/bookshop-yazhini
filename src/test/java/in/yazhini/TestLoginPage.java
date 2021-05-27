@@ -4,9 +4,9 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import in.yazhini.validator.AdminService;
+import in.yazhini.validator.LoginPage;
 
-public class TestAdminPage {
+public class TestLoginPage {
 	/**
 	 * Declare the Valid Admin Details
 	 * 
@@ -17,17 +17,17 @@ public class TestAdminPage {
 		String userName = "Yazhini";
 		String password = "Admin123";
 		String role = "ADMIN";
-		boolean login = AdminService.adminLogin(userName, password, role);
+		boolean login = LoginPage.adminLogin(userName, password, role);
 		assertTrue(login);
 	}
 
-	/** Declare the InValid Admin Details **/
+	/** Declare the valid Customer Details **/
 	@Test
 	public void customerValidation() {
 		String userName = "Kani";
 		String password = "kani123";
 		String role = "CUSTOMER";
-		boolean login = AdminService.customerLogin(userName, password, role);
+		boolean login = LoginPage.customerLogin(userName, password, role);
 		assertTrue(login);
 	}
 

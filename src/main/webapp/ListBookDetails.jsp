@@ -21,8 +21,6 @@
 					<th id="AuthorName">AuthorName</th>
 					<th id="BookPrice">BookPrice</th>
 					<th id="NoOfBooks">NoOfBooks</th>
-
-
 				</tr>
 			</thead>
 			<tbody>
@@ -39,7 +37,7 @@
 					<td>Rs.<%=books.getBookPrice()%>/-
 					</td>
 					<td><%=books.getNoOfBooks()%></td>
-                   
+
 				</tr>
 				<%
 				i++;
