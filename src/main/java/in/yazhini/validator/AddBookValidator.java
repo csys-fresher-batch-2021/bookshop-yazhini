@@ -13,9 +13,11 @@ public class AddBookValidator {
 	 * @return
 	 */
 	public static boolean isValidBookName(String bookName) {
-		boolean isValid = false;
-		if (!bookName.equals("null") && !bookName.trim().equals("")) {
-			isValid = true;
+		boolean isValid = true;
+
+		String regex = ".*[0-9@$%^=()./#&+-].*";
+		if (bookName == null || bookName.trim().equals("") || bookName.matches(regex) || bookName.length() < 3) {
+			isValid = false;
 		}
 		return isValid;
 	}
@@ -28,9 +30,12 @@ public class AddBookValidator {
 	 * @return
 	 */
 	public static boolean isValidAuthorName(String authorName) {
-		boolean isValid = false;
-		if (!authorName.equals("null") && !authorName.trim().equals("")) {
-			isValid = true;
+		boolean isValid = true;
+
+		String regex = ".*[0-9@$%^=()./#&+-].*";
+		if (authorName == null || authorName.trim().equals("") || authorName.matches(regex)
+				|| authorName.length() < 3) {
+			isValid = false;
 		}
 		return isValid;
 	}
@@ -63,6 +68,5 @@ public class AddBookValidator {
 		return isValid;
 
 	}
-	
-}
 
+}
