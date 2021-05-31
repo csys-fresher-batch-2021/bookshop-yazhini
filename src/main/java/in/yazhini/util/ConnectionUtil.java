@@ -11,12 +11,12 @@ public class ConnectionUtil {
 	private ConnectionUtil() {
 
 	}
-
+	private static final String DRIVER_CLASS_NAME = "org.postgresql.Driver";
+	private static final String URL = "jdbc:postgresql://localhost:5432/BookApp_db";
+	private static final String USERNAME = "postgres";
+	private static final String PASSWORD = "oracle";
 	public static Connection getConnection() throws ClassNotFoundException, SQLException {
-		String DRIVER_CLASS_NAME = "org.postgresql.Driver";
-		String URL = "jdbc:postgresql://localhost:5432/BookApp_db";
-		String USERNAME = "postgres";
-		String PASSWORD = "oracle";
+		
 		// Step 1: Load the jdbc driver in memory
 		Class.forName(DRIVER_CLASS_NAME);
 		// Step 2: Get the connection
