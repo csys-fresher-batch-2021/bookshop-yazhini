@@ -21,14 +21,14 @@ public class ConnectionUtil {
 		Class.forName(driverClass);
 		// Step 2: Get the connection
 		Connection connection = DriverManager.getConnection(url, username, password);
-		System.out.println("Connection Created");
+		//System.out.println("Connection Created");
 		return connection;
 	}
 	public static void close1(Connection con, PreparedStatement pst) {
 		try {
 			if (con != null) {
 				con.close();
-				System.out.println("Connection Released");
+				//System.out.println("Connection Released");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -39,7 +39,7 @@ public class ConnectionUtil {
 		try {
 			if (con != null) {
 				con.close();
-				System.out.println("Connection Released");
+				//System.out.println("Connection Released");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

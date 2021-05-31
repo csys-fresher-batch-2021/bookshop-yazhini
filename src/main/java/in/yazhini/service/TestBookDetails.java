@@ -28,10 +28,6 @@ public class TestBookDetails {
 
 	}
 
-	public TestBookDetails(String bookName, String authorName, Float bookPrice, Integer noOfBooks, String status) {
-
-	}
-
 	public static List<BookDetails> getBookList() {
 		return bookList;
 	}
