@@ -8,6 +8,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ConnectionUtil {
+	private ConnectionUtil() {
+
+	}
+
 	public static Connection getConnection() throws ClassNotFoundException, SQLException {
 		String driverClass = "org.postgresql.Driver";
 		String url = "jdbc:postgresql://localhost:5432/BookApp_db";
@@ -17,8 +21,7 @@ public class ConnectionUtil {
 		Class.forName(driverClass);
 		// Step 2: Get the connection
 		Connection connection = DriverManager.getConnection(url, username, password);
-
-		return connection;
+        return connection;
 	}
 
 	public static void close1(Connection con, PreparedStatement pst) {
@@ -35,10 +38,16 @@ public class ConnectionUtil {
 
 	public static void close2(ResultSet rs, Connection con, PreparedStatement pst) {
 		try {
+			if (rs != null) {
+				rs.close();
+			}
+			if (pst != null) {
+				pst.close();
+			}
 			if (con != null) {
 				con.close();
-
 			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
