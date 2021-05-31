@@ -26,6 +26,9 @@ public class ConnectionUtil {
 
 	public static void close1(Connection con, PreparedStatement pst) {
 		try {
+			if (pst != null) {
+				pst.close();
+			}
 			if (con != null) {
 				con.close();
 
