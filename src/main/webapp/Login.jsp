@@ -26,8 +26,6 @@
 				value="CUSTOMER">CUSTOMER<br> <br />
 
 			<button class="btn btn-primary">LOGIN</button>
-
-
 		</form>
 	</main>
 </body>

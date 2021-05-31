@@ -4,14 +4,16 @@ import java.util.ArrayList;
 
 import java.util.List;
 
+import in.yazhini.dao.BookDao;
 import in.yazhini.model.BookDetails;
 import in.yazhini.validator.AddBookValidator;
 
 public class TestBookDetails {
 	private TestBookDetails() {
+
 	}
 
-//list of  bookdetails to stored in array list
+	// list of bookdetails to stored in array list
 	private static final List<BookDetails> bookList = new ArrayList<>();
 	static {
 
@@ -38,7 +40,7 @@ public class TestBookDetails {
 
 			BookDetails books = new BookDetails(bookName, authorName, bookPrice, noOfBooks);
 			bookList.add(books);
-
+			BookDao.addBook(bookName, authorName, bookPrice, noOfBooks);
 			isAdded = true;
 		}
 		return isAdded;
@@ -53,6 +55,7 @@ public class TestBookDetails {
 
 			if ((books.getBookName().equalsIgnoreCase(bookName))) {
 				searchProduct = books;
+				BookDao.deleteBook(bookName);
 				break;
 			}
 		}
