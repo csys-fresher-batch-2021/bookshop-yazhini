@@ -33,7 +33,7 @@ public class CustomerSelectServlet extends HttpServlet {
 
 		if (isAdded) {
 			String errorMessage = "Successfully Added";
-			response.sendRedirect("Bill.jsp?errorMessage=" + errorMessage);
+			response.sendRedirect("Registration.jsp?errorMessage=" + errorMessage);
 		} else {
 			String errorMessage = "Invalid BookName or NoOfBooks is NotAvailable";
 			response.sendRedirect(MSG + errorMessage);

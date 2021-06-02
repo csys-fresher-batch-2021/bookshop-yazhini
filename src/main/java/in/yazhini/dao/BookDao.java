@@ -39,7 +39,7 @@ public class BookDao {
 			pst.setString(2, authorName);
 			pst.setFloat(3, bookPrice);
 			pst.setInt(4, noOfBooks);
-
+			pst.executeUpdate();
 			// Execute Query
 
 		} catch (ClassNotFoundException | SQLException e) {
@@ -68,12 +68,13 @@ public class BookDao {
 			// Get Connection
 			connection = ConnectionUtil.getConnection();
 			// prepare data
-			String sql = "update BookDetails set status='inactive' WHERE bookname=?";
+			String sql = "DELETE FROM BookDetails WHERE bookname= ?;";
 
 			// Execute Query
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, bookName);
-
+			pst.executeUpdate();
+			
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 

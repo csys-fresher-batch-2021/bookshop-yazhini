@@ -17,7 +17,8 @@ import in.yazhini.service.TestBookDetails;
 @WebServlet("/DeleteBookServlet")
 public class DeleteBookServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+	private static final String MSG = "DeleteBook.jsp?errorMessage=";
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -35,7 +36,7 @@ public class DeleteBookServlet extends HttpServlet {
 				response.sendRedirect("ListBookDetails.jsp?errorMessage=" + errorMessage);
 			} else {
 				String errorMessage = "Invalid BookName ";
-				response.sendRedirect("Modify.jsp?errorMessge="+ errorMessage);
+				response.sendRedirect(MSG + errorMessage);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

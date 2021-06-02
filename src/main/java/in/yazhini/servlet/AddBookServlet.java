@@ -16,7 +16,7 @@ import in.yazhini.service.TestBookDetails;
 @WebServlet("/AddBookServlet")
 public class AddBookServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+	private static final String MSG = "AddBook.jsp?errorMessage=";
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -39,8 +39,8 @@ public class AddBookServlet extends HttpServlet {
 				String errorMessage = "Successfully Added";
 				response.sendRedirect("ListBookDetails.jsp?errorMessage=" + errorMessage);
 			} else {
-				String errorMessage = "Invalid BookName or The BookName Already Added";
-				response.sendRedirect("Modify.jsp?errorMessage=" + errorMessage);
+				String errorMessage = "Invalid Book Credentials";
+				response.sendRedirect(MSG+ errorMessage);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
