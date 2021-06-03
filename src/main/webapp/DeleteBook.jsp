@@ -19,7 +19,7 @@
 				name="BookName" placeholder=" BookName" required /> <br /> <br>
 			<br>
 			<button class="btn btn-danger">DELETE</button>
-
+			<button class="btn btn-secondary" type="reset">Reset</button>
 		</form>
 	</main>
 </body>

@@ -24,7 +24,7 @@
 				name="noOfBooks" placeholder="NoOfBooks" required min="1" /> <br>
 			<br />
 			<button class="btn btn-primary">ADD</button>
-
+			<button class="btn btn-secondary" type="reset">Reset</button>
 		</form>
 	</main>
 </body>
