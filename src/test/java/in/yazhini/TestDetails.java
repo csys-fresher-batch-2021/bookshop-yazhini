@@ -2,6 +2,7 @@ package in.yazhini;
 
 import static org.junit.Assert.assertEquals;
 
+
 import java.util.List;
 
 
@@ -13,9 +14,9 @@ import in.yazhini.service.TestRegistrationDetails;
 public class TestDetails {
 	
 		@Test
-		public void numberOfBookTypesTest() {
-			List<RegistrationDetails> detailList = TestRegistrationDetails.getDetailList();
-			assertEquals(4,detailList.size());
+		public void DetailsTest() {
+			List<RegistrationDetails> detailList = TestRegistrationDetails.getDetailsList();
+			assertEquals(0,detailList.size());
 		}
 
 	}

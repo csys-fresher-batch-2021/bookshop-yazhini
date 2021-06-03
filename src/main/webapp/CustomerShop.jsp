@@ -16,10 +16,10 @@
 		}
 		%>
 
-		<form action="CustomerSelectServlet" method="get">
+		<form action="CustomerShopServlet" method="post">
 			<label for="bookName"> Enter BookName :</label> <input type="text"
 				name="bookName" placeholder=" BookName" required /> <br /> <label
-				for="noOfBooks">NoOFBooks :</label> <input type="number"
+				for="noOfBooks"> Enter Quantity :</label> <input type="number"
 				name="noOfBooks" placeholder="NoOfBooks" required min="1" /> <br>
 			<br>
 
