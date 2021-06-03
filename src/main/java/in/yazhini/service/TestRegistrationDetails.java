@@ -10,7 +10,9 @@ import in.yazhini.model.RegistrationDetails;
 import in.yazhini.validator.RegistrationValidator;
 
 public class TestRegistrationDetails {
-
+private TestRegistrationDetails() {
+	
+}
 	private static final List<RegistrationDetails> detailsList = new ArrayList<>();
 
 	public static List<RegistrationDetails> getDetailsList() {
