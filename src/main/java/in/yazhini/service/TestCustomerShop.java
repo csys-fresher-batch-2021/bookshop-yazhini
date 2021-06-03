@@ -3,7 +3,7 @@ package in.yazhini.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import in.yazhini.dao.ShopDao;
+
 import in.yazhini.model.BookDetails;
 import in.yazhini.model.CustomerShop;
 import in.yazhini.model.Gst;
@@ -38,7 +38,7 @@ public class TestCustomerShop {
 				purchase.add(shop);
 
 				System.out.println(shop);
-              ShopDao.addDetails(bookName, noOfBooks, price, totalAmount);
+             
 				isAdded = true;
 				break;
 			}
