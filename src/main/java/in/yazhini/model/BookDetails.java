@@ -19,7 +19,7 @@ public class BookDetails {
 		return bookPrice;
 	}
 
-	public int getNoOfBooks() {
+	public Integer getNoOfBooks() {
 		return noOfBooks;
 	}
 
