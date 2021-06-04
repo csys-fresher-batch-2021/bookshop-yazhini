@@ -2,6 +2,7 @@ package in.yazhini.servlet;
 
 import java.io.IOException;
 
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,10 +28,10 @@ public class CustomerShopServlet extends HttpServlet {
 		
 		String bookName = request.getParameter("bookName");
 		String noOfBooks = request.getParameter("noOfBooks");
-		int Quantity = Integer.parseInt(noOfBooks);
-		double gst = 0.08;
-		boolean isAdded = TestCustomerShop.shoppingList(bookName, Quantity);
-		TestCustomerShop.gstCalculation(bookName, gst);
+		int quantity = Integer.parseInt(noOfBooks);
+
+		boolean isAdded = TestCustomerShop.shoppingList(bookName, quantity);
+		
 		if (isAdded) {
 			String errorMessage = "Succefully Added";
 			response.sendRedirect("Bill.jsp?errorMessage=" + errorMessage);

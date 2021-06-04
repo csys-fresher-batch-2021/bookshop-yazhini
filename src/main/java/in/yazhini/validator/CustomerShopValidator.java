@@ -1,6 +1,7 @@
 package in.yazhini.validator;
 
 import in.yazhini.model.BookDetails;
+
 import in.yazhini.service.TestBookDetails;
 
 public class CustomerShopValidator {
@@ -13,16 +14,17 @@ public class CustomerShopValidator {
 			if (add.getBookName().equalsIgnoreCase(bookName) ) {
 				quantity = add.getNoOfBooks();
 				System.out.println(quantity);
-				if((quantity > noOfBooks)&&(quantity>0)) {
+				if(quantity > noOfBooks) {
 				System.out.println("correct book");
 				isValid = true;
 				}
 			System.out.println("wrong");
 			
 		}
-		return isValid;
+			
 	}
 		return isValid;
+		
 }
 }
 	

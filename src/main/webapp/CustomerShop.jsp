@@ -7,8 +7,7 @@
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
-		<br>
-		<br>
+		<br><br>
 		<%
 		String errorMessage = request.getParameter("errorMessage");
 		if (errorMessage != null) {
