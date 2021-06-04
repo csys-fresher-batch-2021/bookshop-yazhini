@@ -21,7 +21,7 @@ public class TestCustomerShop {
 		double price = 0;
 		double gst = 0.05;
 		for (BookDetails add : TestBookDetails.getBookList()) {
-			System.out.println("in");
+			
 			// bookname and noofbooks validation
 			if (add.getBookName().equalsIgnoreCase(bookName)
 					&& CustomerShopValidator.isValidQuantity(noOfBooks, bookName)) {

@@ -5,6 +5,9 @@ import in.yazhini.model.BookDetails;
 import in.yazhini.service.TestBookDetails;
 
 public class CustomerShopValidator {
+	private CustomerShopValidator() {
+		
+	}
 	public static boolean isValidQuantity(int noOfBooks, String bookName) {
 		boolean isValid = false;
 		int quantity = 0;
@@ -13,7 +16,7 @@ public class CustomerShopValidator {
 			// bookname and noofbooks validation
 			if (add.getBookName().equalsIgnoreCase(bookName)) {
 				quantity = add.getNoOfBooks();
-				System.out.println(quantity);
+				
 				if (quantity > noOfBooks) {
 
 					isValid = true;
