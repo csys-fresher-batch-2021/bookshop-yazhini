@@ -41,7 +41,7 @@ public class CustomerShopServlet extends HttpServlet {
 				response.sendRedirect("CustomerShop.jsp?errorMessage=" + errorMessage);
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
