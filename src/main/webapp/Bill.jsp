@@ -12,6 +12,7 @@
 	<main class="container-fluid">
 		<h3>YOUR TOTAL BILL AMOUNT :</h3>
 		<table class="table table-bordered">
+		<caption> Display Bill</caption>
 			<thead>
 				<tr>
 

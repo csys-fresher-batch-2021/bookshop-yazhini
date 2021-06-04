@@ -31,13 +31,18 @@ public class CustomerShopServlet extends HttpServlet {
 
 		boolean isAdded = TestCustomerShop.shoppingList(bookName, quantity);
 
-		if (isAdded) {
-			String errorMessage = "Succefully Added";
-			response.sendRedirect("Bill.jsp?errorMessage=" + errorMessage);
+		try {
+			if (isAdded) {
+				String errorMessage = "Succefully Added";
+				response.sendRedirect("Bill.jsp?errorMessage=" + errorMessage);
 
-		} else {
-			String errorMessage = "InValid BookName or NoOfBooks";
-			response.sendRedirect("CustomerShop.jsp?errorMessage=" + errorMessage);
+			} else {
+				String errorMessage = "InValid BookName or NoOfBooks";
+				response.sendRedirect("CustomerShop.jsp?errorMessage=" + errorMessage);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 }
