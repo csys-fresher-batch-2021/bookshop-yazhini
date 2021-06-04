@@ -12,6 +12,7 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<h3>Book Details:</h3>
+
 		<table class="table table-bordered">
 			<caption>List of Books</caption>
 			<thead>

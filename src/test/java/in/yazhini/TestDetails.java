@@ -16,7 +16,7 @@ public class TestDetails {
 		@Test
 		public void DetailsTest() {
 			List<RegistrationDetails> detailList = TestRegistrationDetails.getDetailsList();
-			assertEquals(0,detailList.size());
+			assertEquals(6,detailList.size());
 		}
 
 	}

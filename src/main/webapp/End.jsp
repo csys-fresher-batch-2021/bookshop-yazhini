@@ -1,15 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html lang=en>
+<html lang="en">
 <head>
-<title>BookApp</title>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
 </head>
 <body>
-	<jsp:include page="header.jsp"></jsp:include>
-	<main class="container-fluid">
-		<h3>!!!!!!! THANK YOU !!!!!!!</h3>
-
-		<p>Your Shopping Successfully</p>
-
-	</main>
+	<h4>YOUR ORDER SUCCESSFULLY</h4>
+	<h1>!!!!!! THANK YOU !!!!!!</h1>
 </body>
 </html>
