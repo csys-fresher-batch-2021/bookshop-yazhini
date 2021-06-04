@@ -2,7 +2,6 @@ package in.yazhini.servlet;
 
 import java.io.IOException;
 
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,13 +24,13 @@ public class CustomerShopServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		String bookName = request.getParameter("bookName");
 		String noOfBooks = request.getParameter("noOfBooks");
 		int quantity = Integer.parseInt(noOfBooks);
 
 		boolean isAdded = TestCustomerShop.shoppingList(bookName, quantity);
-		
+
 		if (isAdded) {
 			String errorMessage = "Succefully Added";
 			response.sendRedirect("Bill.jsp?errorMessage=" + errorMessage);

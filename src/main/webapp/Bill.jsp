@@ -1,10 +1,6 @@
-
 <%@page import="in.yazhini.service.*"%>
 <%@page import="java.util.List"%>
 <%@page import="in.yazhini.model.CustomerShop"%>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +21,7 @@
 					<th scope="col">Price</th>
 					<th scope="col">TotalPrice</th>
 					<th scope="col">TotalAmount=TotalPrice + GST</th>
-                    <th scope="col">Confirm order</th>
+					<th scope="col">Confirm order</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -38,7 +34,7 @@
 				for (CustomerShop order : orders) {
 					i++;
 				%>
-				
+
 				<tr>
 
 					<td><%=order.getBookName()%></td>
@@ -46,14 +42,15 @@
 					<td><%=order.getPrice()%></td>
 					<td><%=order.getTotalAmount()%></td>
 					<td><%=order.getGst()%></td>
-             <th> <a href="Registration.jsp" class="btn btn-danger">ORDER NOW</a></th>
-              
+					<td><a href="Registration.jsp" class="btn btn-danger">ORDER
+							NOW</a></td>
+
 				</tr>
 				<%
 				}
 				%>
-				
-                  
+
+
 			</tbody>
 		</table>
 

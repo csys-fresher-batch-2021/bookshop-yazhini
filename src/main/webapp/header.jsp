@@ -26,7 +26,7 @@ String role = (String) session.getAttribute("ROLE");
 				<li class="nav-item"><a class="nav-link"
 					href="ListBookDetails.jsp">Books</a></li>
 				<li class="nav-item"><a class="nav-link" href="Modify.jsp">MODIFY</a></li>
-						
+
 				<%
 				}
 				%>
@@ -37,12 +37,12 @@ String role = (String) session.getAttribute("ROLE");
 					href="ListBookDetails.jsp">Books</a></li>
 				<li class="nav-item"><a class="nav-link"
 					href="CustomerShop.jsp">ORDER</a></li>
-					<li class="nav-item"><a class="nav-link" href="Registration.jsp">Register</a>
-				</li>
+				<li class="nav-item"><a class="nav-link"
+					href="Registration.jsp">Register</a></li>
 				<%
 				}
 				%>
-				
+
 			</ul>
 			<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
 				<%
@@ -50,7 +50,7 @@ String role = (String) session.getAttribute("ROLE");
 				%>
 				<li class="nav-item active"><a class="nav-link"
 					href="Login.jsp">Login</a></li>
-				
+
 				<%
 				} else {
 				%>
