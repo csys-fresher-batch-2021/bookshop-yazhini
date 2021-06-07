@@ -42,7 +42,7 @@ public class BookDao {
 			pst.executeUpdate();
 			// Execute Query
 
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 
 		} finally {
@@ -75,7 +75,7 @@ public class BookDao {
 			pst.setString(1, bookName);
 			pst.executeUpdate();
 			
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 
 		} finally {

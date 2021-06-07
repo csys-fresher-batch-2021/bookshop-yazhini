@@ -30,7 +30,7 @@ public class CustomerShopDao {
 			pst.executeUpdate();
 			// Execute Query
 
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 
 		} finally {

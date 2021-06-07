@@ -15,7 +15,7 @@ public class RegistrationDetailsUtil {
 	private static final String USERNAME = System.getenv("spring.datasource.username");
 	private static final String PASSWORD = System.getenv("spring.datasource.password");
 
-	public static Connection getConnection() throws ClassNotFoundException, SQLException {
+	public static Connection getConnection() throws  SQLException {
 		// Step 2: Get the connection
 		Connection connection = null;
 		try {
