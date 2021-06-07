@@ -17,12 +17,19 @@ public class ConnectionUtil {
 	private static final String USERNAME = System.getenv("spring.datasource.username");
 	private static final String PASSWORD = System.getenv("spring.datasource.password");
 
-	public static Connection getConnection() throws ClassNotFoundException, SQLException {
-
-		// Step 1: Load the jdbc driver in memory
-		Class.forName(DRIVER_CLASS_NAME);
+	public static Connection getConnection() throws SQLException {
 		// Step 2: Get the connection
-		Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+		Connection connection = null;
+		try {
+			// Step 1: Load the jdbc driver in memory
+			Class.forName(DRIVER_CLASS_NAME);
+			connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			throw new SQLException("INVALID USER ID");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return connection;
 	}
 
