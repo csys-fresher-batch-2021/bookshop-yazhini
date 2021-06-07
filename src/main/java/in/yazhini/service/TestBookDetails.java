@@ -19,7 +19,7 @@ public class TestBookDetails {
 
 		BookDetails book1 = new BookDetails("TamilNovels", "Thiruvalluvar", 200f, 10);
 		bookList.add(book1);
-     	BookDetails book2 = new BookDetails("EnglishNovels", "George Orwell", 250f, 20);
+		BookDetails book2 = new BookDetails("EnglishNovels", "George Orwell", 250f, 20);
 		bookList.add(book2);
 		BookDetails book3 = new BookDetails("MathematicalDiscoveries", "Srinivasa Ramanujan", 300f, 10);
 		bookList.add(book3);
@@ -35,13 +35,18 @@ public class TestBookDetails {
 //add some books in a book list
 	public static boolean addBook(String bookName, String authorName, float bookPrice, int noOfBooks) {
 		boolean isAdded = false;
-		if ((AddBookValidator.isValidBookName(bookName)) && (AddBookValidator.isValidAuthorName(bookName))
-				&& (AddBookValidator.isValidBookPrice(bookPrice)) && (AddBookValidator.isValidNoOfBooks(noOfBooks))) {
+		try {
+			if ((AddBookValidator.isValidBookName(bookName)) && (AddBookValidator.isValidAuthorName(bookName))
+					&& (AddBookValidator.isValidBookPrice(bookPrice))
+					&& (AddBookValidator.isValidNoOfBooks(noOfBooks))) {
 
-			BookDetails books = new BookDetails(bookName, authorName, bookPrice, noOfBooks);
-			bookList.add(books);
-			BookDao.addBook(bookName, authorName, bookPrice, noOfBooks);
-			isAdded = true;
+				BookDetails books = new BookDetails(bookName, authorName, bookPrice, noOfBooks);
+				bookList.add(books);
+				BookDao.addBook(bookName, authorName, bookPrice, noOfBooks);
+				isAdded = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return isAdded;
 	}
@@ -55,7 +60,12 @@ public class TestBookDetails {
 
 			if ((books.getBookName().equalsIgnoreCase(bookName))) {
 				searchProduct = books;
-				BookDao.deleteBook(bookName);
+				try {
+					BookDao.deleteBook(bookName);
+				} catch (ClassNotFoundException e) {
+
+					e.printStackTrace();
+				}
 				break;
 			}
 		}

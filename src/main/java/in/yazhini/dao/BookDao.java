@@ -2,7 +2,6 @@ package in.yazhini.dao;
 
 import java.sql.Connection;
 
-
 import java.sql.PreparedStatement;
 
 import java.sql.SQLException;
@@ -22,10 +21,12 @@ public class BookDao {
 	 * @param bookprice
 	 * @param noofbooks
 	 * @return
+	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @throws Exception
 	 */
-	public static boolean addBook(String bookName, String authorName, float bookPrice, int noOfBooks) {
+	public static boolean addBook(String bookName, String authorName, float bookPrice, int noOfBooks)
+			throws ClassNotFoundException {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		// Get Connection
@@ -42,9 +43,8 @@ public class BookDao {
 			pst.executeUpdate();
 			// Execute Query
 
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-
 		} finally {
 
 			ConnectionUtil.close1(connection, pst);
@@ -52,16 +52,16 @@ public class BookDao {
 		}
 		return inserted;
 	}
-	
-	
+
 	/**
 	 * Delete specific data in database
 	 * 
 	 * @param bookName
+	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * 
 	 */
-	public static boolean deleteBook(String bookName) {
+	public static boolean deleteBook(String bookName) throws ClassNotFoundException {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		try {
@@ -74,10 +74,9 @@ public class BookDao {
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, bookName);
 			pst.executeUpdate();
-			
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
 
+		} catch (SQLException e) {
+			e.printStackTrace();
 		} finally {
 
 			ConnectionUtil.close1(connection, pst);

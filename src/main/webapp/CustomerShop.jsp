@@ -7,8 +7,7 @@
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
-		<br>
-		<br>
+		<br> <br>
 		<%
 		String errorMessage = request.getParameter("errorMessage");
 		if (errorMessage != null) {
@@ -17,6 +16,8 @@
 		%>
 		<h3>!!! I do Belive Something Very Magical Can Happen When You
 			Read a Book !!!</h3>
+		<br>
+		<br>
 		<form action="CustomerShopServlet" method="post">
 			<label for="bookName"> Enter BookName :</label> <input type="text"
 				name="bookName" placeholder=" BookName" required /> <br /> <label

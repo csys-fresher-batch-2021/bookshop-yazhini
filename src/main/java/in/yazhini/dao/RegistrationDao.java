@@ -13,7 +13,7 @@ public class RegistrationDao {
 		// default constructor
 	}
 
-	public static boolean addDetails(String name, String emailId, Long mobileNo, String address) {
+	public static boolean addDetails(String name, String emailId, Long mobileNo, String address) throws ClassNotFoundException {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		// Get Connection
@@ -30,7 +30,7 @@ public class RegistrationDao {
 			pst.executeUpdate();
 			// Execute Query
 
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 
 		} finally {

@@ -12,7 +12,7 @@
 	<main class="container-fluid">
 		<h3>YOUR TOTAL BILL AMOUNT :</h3>
 		<table class="table table-bordered">
-		<caption> Display Bill</caption>
+			<caption>Display Bill</caption>
 			<thead>
 				<tr>
 
@@ -22,6 +22,7 @@
 					<th scope="col">TotalPrice</th>
 					<th scope="col">TotalAmount=TotalPrice + GST</th>
 					<th scope="col">Confirm order</th>
+					<th scope="col">Order Cancel</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -44,6 +45,7 @@
 					<td><%=order.getGst()%></td>
 					<td><a href="Registration.jsp" class="btn btn-danger">ORDER
 							NOW</a></td>
+
 
 				</tr>
 				<%
