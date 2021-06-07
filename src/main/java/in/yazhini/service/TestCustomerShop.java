@@ -47,7 +47,7 @@ public class TestCustomerShop {
 
 				}
 			} catch (Exception e) {
-				
+
 				e.printStackTrace();
 			}
 		}

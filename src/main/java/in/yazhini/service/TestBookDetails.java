@@ -60,7 +60,12 @@ public class TestBookDetails {
 
 			if ((books.getBookName().equalsIgnoreCase(bookName))) {
 				searchProduct = books;
-				BookDao.deleteBook(bookName);
+				try {
+					BookDao.deleteBook(bookName);
+				} catch (ClassNotFoundException e) {
+
+					e.printStackTrace();
+				}
 				break;
 			}
 		}
