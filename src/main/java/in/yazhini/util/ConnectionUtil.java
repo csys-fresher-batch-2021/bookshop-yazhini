@@ -11,12 +11,14 @@ public class ConnectionUtil {
 	private ConnectionUtil() {
 
 	}
-	private static final String DRIVER_CLASS_NAME = "org.postgresql.Driver";
-	private static final String URL = "jdbc:postgresql://localhost:5432/BookApp_db";
-	private static final String USERNAME = "postgres";
-	private static final String PASSWORD = "oracle";
+
+	private static final String DRIVER_CLASS_NAME = System.getenv("spring.datasource.driver-class-name");
+	private static final String URL = "jdbc:postgresql://projecttracker.ck1ayq0lncmp.ap-south-1.rds.amazonaws.com/bankapp_db";
+	private static final String USERNAME = System.getenv("spring.datasource.username");
+	private static final String PASSWORD = System.getenv("spring.datasource.password");
+
 	public static Connection getConnection() throws ClassNotFoundException, SQLException {
-		
+
 		// Step 1: Load the jdbc driver in memory
 		Class.forName(DRIVER_CLASS_NAME);
 		// Step 2: Get the connection

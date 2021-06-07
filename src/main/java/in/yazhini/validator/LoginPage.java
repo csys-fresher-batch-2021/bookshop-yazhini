@@ -1,4 +1,3 @@
-
 package in.yazhini.validator;
 
 public class LoginPage {

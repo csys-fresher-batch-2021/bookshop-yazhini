@@ -3,10 +3,11 @@ package in.yazhini.util;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+
 import java.sql.SQLException;
 
-public class RegistrationDetailsUtil {
-	private RegistrationDetailsUtil() {
+public class CustomerShopUtil {
+	private CustomerShopUtil() {
 
 	}
 
