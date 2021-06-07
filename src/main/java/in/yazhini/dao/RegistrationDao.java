@@ -33,6 +33,9 @@ public class RegistrationDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 
+		} catch (ClassNotFoundException e) {
+
+			e.printStackTrace();
 		} finally {
 
 			RegistrationDetailsUtil.close1(connection, pst);

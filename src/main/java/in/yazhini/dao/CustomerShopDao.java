@@ -33,6 +33,8 @@ public class CustomerShopDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 		} finally {
 
 			CustomerShopUtil.close1(connection, pst);

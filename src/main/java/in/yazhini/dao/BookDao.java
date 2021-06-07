@@ -2,7 +2,6 @@ package in.yazhini.dao;
 
 import java.sql.Connection;
 
-
 import java.sql.PreparedStatement;
 
 import java.sql.SQLException;
@@ -45,6 +44,8 @@ public class BookDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 		} finally {
 
 			ConnectionUtil.close1(connection, pst);
@@ -52,8 +53,7 @@ public class BookDao {
 		}
 		return inserted;
 	}
-	
-	
+
 	/**
 	 * Delete specific data in database
 	 * 
@@ -74,10 +74,12 @@ public class BookDao {
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, bookName);
 			pst.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 		} finally {
 
 			ConnectionUtil.close1(connection, pst);
