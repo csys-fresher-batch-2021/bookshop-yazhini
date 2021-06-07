@@ -12,7 +12,7 @@ public class CustomerShopDao {
 	}
 
 	public static boolean addDetails(String bookName, Integer noOfBooks, double price, double totalAmount,
-			double gstAmount) {
+			double gstAmount) throws ClassNotFoundException {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		// Get Connection
@@ -33,8 +33,6 @@ public class CustomerShopDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
 		} finally {
 
 			CustomerShopUtil.close1(connection, pst);

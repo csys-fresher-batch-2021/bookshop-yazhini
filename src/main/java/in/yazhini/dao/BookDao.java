@@ -21,10 +21,11 @@ public class BookDao {
 	 * @param bookprice
 	 * @param noofbooks
 	 * @return
+	 * @throws ClassNotFoundException 
 	 * @throws SQLException
 	 * @throws Exception
 	 */
-	public static boolean addBook(String bookName, String authorName, float bookPrice, int noOfBooks) {
+	public static boolean addBook(String bookName, String authorName, float bookPrice, int noOfBooks) throws ClassNotFoundException {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		// Get Connection
@@ -42,9 +43,6 @@ public class BookDao {
 			// Execute Query
 
 		} catch (SQLException e) {
-			e.printStackTrace();
-
-		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} finally {
 
