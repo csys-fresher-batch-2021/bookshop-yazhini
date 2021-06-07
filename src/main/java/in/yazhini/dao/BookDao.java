@@ -56,10 +56,11 @@ public class BookDao {
 	 * Delete specific data in database
 	 * 
 	 * @param bookName
+	 * @throws ClassNotFoundException 
 	 * @throws SQLException
 	 * 
 	 */
-	public static boolean deleteBook(String bookName) {
+	public static boolean deleteBook(String bookName) throws ClassNotFoundException {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		try {
@@ -74,9 +75,6 @@ public class BookDao {
 			pst.executeUpdate();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
-
-		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} finally {
 
