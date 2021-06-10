@@ -1,5 +1,8 @@
 package in.yazhini.validator;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class AddBookValidator {
 	private AddBookValidator() {
 		// default constructor
@@ -13,13 +16,14 @@ public class AddBookValidator {
 	 * @return
 	 */
 	public static boolean isValidBookName(String bookName) {
-		boolean isValid = true;
-
-		String regex = ".*[0-9@$%^=()./#&+-].*";
-		if (bookName == null || bookName.trim().equals("") || bookName.matches(regex) || bookName.length() < 3) {
-			isValid = false;
+		boolean valid = false;
+		String condition = "[a-zA-Z\\s*]+";
+		Pattern pattern = Pattern.compile(condition);
+		Matcher matcher = pattern.matcher(bookName);
+		if (matcher.matches()) {
+			return valid = true;
 		}
-		return isValid;
+		return valid;
 	}
 
 	/**
@@ -30,14 +34,15 @@ public class AddBookValidator {
 	 * @return
 	 */
 	public static boolean isValidAuthorName(String authorName) {
-		boolean isValid = true;
+		boolean valid = false;
 
-		String regex = ".*[0-9@$%^=()./#&+-].*";
-		if (authorName == null || authorName.trim().equals("") || authorName.matches(regex)
-				|| authorName.length() < 3) {
-			isValid = false;
+		String condition = "[a-zA-Z\\s*]+";
+		Pattern pattern = Pattern.compile(condition);
+		Matcher matcher = pattern.matcher(authorName);
+		if (matcher.matches()) {
+			return valid = true;
 		}
-		return isValid;
+		return valid;
 	}
 
 	/**
@@ -46,7 +51,7 @@ public class AddBookValidator {
 	 * @param cost
 	 * @return
 	 */
-	public static boolean isValidBookPrice(Float bookPrice) {
+	public static boolean isValidBookPrice(float bookPrice) {
 		boolean isValid = false;
 		if (bookPrice > 0) {
 			isValid = true;
@@ -68,5 +73,4 @@ public class AddBookValidator {
 		return isValid;
 
 	}
-
 }

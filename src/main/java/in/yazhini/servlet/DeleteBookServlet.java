@@ -2,7 +2,6 @@ package in.yazhini.servlet;
 
 import java.io.IOException;
 
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,13 +26,13 @@ public class DeleteBookServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String bookName = request.getParameter("BookName");
+		String authorName = request.getParameter("AuthorName");
 
-
-		boolean isDeleted= TestBookDetails.deleteBook(bookName);
+		boolean isDeleted = TestBookDetails.deleteBook(bookName, authorName);
 		try {
 			if (isDeleted) {
-				String errorMessage = "Successfully Deleted";
-				response.sendRedirect("ListBookDetails.jsp?errorMessage=" + errorMessage);
+				String infoMessage = "Successfully Deleted";
+				response.sendRedirect("DeleteBook.jsp?infoMessage=" + infoMessage);
 			} else {
 				String errorMessage = "Invalid BookName ";
 				response.sendRedirect(MSG + errorMessage);
@@ -41,8 +40,6 @@ public class DeleteBookServlet extends HttpServlet {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-             
-		
-		}
-	}
 
+	}
+}

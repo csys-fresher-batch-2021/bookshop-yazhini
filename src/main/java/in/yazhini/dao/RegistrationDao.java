@@ -13,7 +13,8 @@ public class RegistrationDao {
 		// default constructor
 	}
 
-	public static boolean addDetails(String name, String emailId, Long mobileNo, String address) throws ClassNotFoundException {
+	public static boolean addDetails(String name, String emailId, Long mobileNo, String address)
+			throws ClassNotFoundException {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		// Get Connection

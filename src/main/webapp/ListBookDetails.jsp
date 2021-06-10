@@ -12,7 +12,12 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<h3>Book Details:</h3>
-
+		<%
+           String infoMessage = request.getParameter("infoMessage");
+		    if (infoMessage != null) {
+			out.println("<font color='green'>" + infoMessage + "</font>");
+		}
+		 %>
 		<table class="table table-bordered">
 			<caption>List of Books</caption>
 			<thead>
@@ -25,7 +30,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<!-- Scriptlets(java code for display the list of case types) -->
+				<!-- Scriptlets(java code for display the list of book types) -->
 				<%
 				List<BookDetails> bookList = TestBookDetails.getBookList();
 				int i = 1;

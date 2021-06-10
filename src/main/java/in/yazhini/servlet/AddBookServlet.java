@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import in.yazhini.model.BookDetails;
 import in.yazhini.service.TestBookDetails;
+import in.yazhini.validator.BookExistsValidator;
 
 /**
  * Servlet implementation class AddBookServlet
@@ -16,7 +18,6 @@ import in.yazhini.service.TestBookDetails;
 @WebServlet("/AddBookServlet")
 public class AddBookServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String MSG = "AddBook.jsp?errorMessage=";
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -25,26 +26,28 @@ public class AddBookServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String bookName = request.getParameter("bookName");
-		String authorName = request.getParameter("authorName");
-		String bookPrice = request.getParameter("bookPrice");
-		String noOfBooks = request.getParameter("noOfBooks");
-		Float bookPrice1 = Float.parseFloat(bookPrice);
-		int noOfBooks1 = Integer.parseInt(noOfBooks);
-
-		boolean isAdded = TestBookDetails.addBook(bookName, authorName, bookPrice1, noOfBooks1);
-
 		try {
+			String bookName = request.getParameter("bookName");
+			String authorName = request.getParameter("authorName");
+			String bookPrice = request.getParameter("bookPrice");
+			String noOfBooks = request.getParameter("noOfBooks");
+			Float bookPrice1 = Float.parseFloat(bookPrice);
+			int noOfBooks1 = Integer.parseInt(noOfBooks);
+
+			BookDetails books = new BookDetails();
+			books.setBookName(bookName);
+			books.setAuthorName(authorName);
+			books.setBookPrice(bookPrice1);
+			books.setNoOfBooks(noOfBooks1);
+			BookExistsValidator.existsBook(bookName, authorName);
+			boolean isAdded = TestBookDetails.addBook(books);
 			if (isAdded) {
-				String errorMessage = "Successfully Added";
-				response.sendRedirect("ListBookDetails.jsp?errorMessage=" + errorMessage);
-			} else {
-				String errorMessage = "Invalid Book Credentials";
-				response.sendRedirect(MSG+ errorMessage);
+				String infoMessage = "Successfully Added";
+				response.sendRedirect("ListBookDetails.jsp?infoMessage=" + infoMessage);
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		
+		} catch (Exception e) {
+			String errorMessage = e.getMessage();
+			response.sendRedirect("AddBook.jsp?errorMessage=" + errorMessage);
 		}
 	}
 }

@@ -6,19 +6,19 @@ import in.yazhini.service.TestBookDetails;
 
 public class CustomerShopValidator {
 	private CustomerShopValidator() {
-		
+
 	}
+
 	public static boolean isValidQuantity(int noOfBooks, String bookName) {
 		boolean isValid = false;
 		int quantity = 0;
-		for (BookDetails add : TestBookDetails.getBookList()) {
+		for (BookDetails book : TestBookDetails.getBookList()) {
 
 			// bookname and noofbooks validation
-			if (add.getBookName().equalsIgnoreCase(bookName)) {
-				quantity = add.getNoOfBooks();
-				
-				if (quantity > noOfBooks) {
+			if (book.getBookName().equalsIgnoreCase(bookName)) {
+				quantity = book.getNoOfBooks();
 
+				if (quantity >= noOfBooks) {
 					isValid = true;
 				}
 			}

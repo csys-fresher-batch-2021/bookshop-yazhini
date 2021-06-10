@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.yazhini.dao.RegistrationDao;
+import in.yazhini.model.BookDetails;
 import in.yazhini.model.RegistrationDetails;
 
 import in.yazhini.validator.RegistrationValidator;
@@ -21,7 +22,8 @@ public class TestRegistrationDetails {
 	}
 
 	// added a customer details in arraylist
-	public static boolean addDetails(String name, String emailId, Long mobileNo, String address) {
+	public static boolean addDetails(String name, String emailId, Long mobileNo, String address, int quantity,
+			String bookName) {
 		boolean isAdded = false; // all details are validate
 		try {
 			if ((RegistrationValidator.isValidName(name)) && (RegistrationValidator.isValidEmailId(emailId))
@@ -32,8 +34,17 @@ public class TestRegistrationDetails {
 				detailsList.add(details);
 				// send details in DAO class
 				RegistrationDao.addDetails(name, emailId, mobileNo, address);
+
+				for (BookDetails book : TestBookDetails.getBookList()) {
+					if (book.getBookName().equalsIgnoreCase(bookName)) {
+						if (quantity <= book.getNoOfBooks()) {
+							book.setNoOfBooks(book.getNoOfBooks() - quantity);
+						}
+					}
+				}
 				isAdded = true;
 			}
+
 		} catch (Exception e) {
 
 			e.printStackTrace();

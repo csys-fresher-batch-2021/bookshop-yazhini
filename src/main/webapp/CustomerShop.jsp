@@ -13,6 +13,7 @@
 		if (errorMessage != null) {
 			out.println("<font color='red'>" + errorMessage + "</font>");
 		}
+		
 		%>
 		<h3>!!! I do Belive Something Very Magical Can Happen When You
 			Read a Book !!!</h3>

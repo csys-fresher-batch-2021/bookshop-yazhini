@@ -12,7 +12,9 @@
 		if (errorMessage != null) {
 			out.println("<font color='red'>" + errorMessage + "</font>");
 		}
+		
 		%>
+		
 		<form action="AddBookServlet" method="get">
 			<label for="bookName"> Enter BookName :</label> <input type="text"
 				name="bookName" placeholder=" BookName" required /> <br /> <label

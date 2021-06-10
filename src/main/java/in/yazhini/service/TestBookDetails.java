@@ -7,6 +7,7 @@ import java.util.List;
 import in.yazhini.dao.BookDao;
 import in.yazhini.model.BookDetails;
 import in.yazhini.validator.AddBookValidator;
+import in.yazhini.validator.BookExistsValidator;
 
 public class TestBookDetails {
 	private TestBookDetails() {
@@ -33,35 +34,37 @@ public class TestBookDetails {
 	}
 
 //add some books in a book list
-	public static boolean addBook(String bookName, String authorName, float bookPrice, int noOfBooks) {
+	public static boolean addBook(BookDetails books) throws ClassNotFoundException {
 		boolean isAdded = false;
-		try {
-			if ((AddBookValidator.isValidBookName(bookName)) && (AddBookValidator.isValidAuthorName(bookName))
-					&& (AddBookValidator.isValidBookPrice(bookPrice))
-					&& (AddBookValidator.isValidNoOfBooks(noOfBooks))) {
 
-				BookDetails books = new BookDetails(bookName, authorName, bookPrice, noOfBooks);
-				bookList.add(books);
-				BookDao.addBook(bookName, authorName, bookPrice, noOfBooks);
-				isAdded = true;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
+		if ((AddBookValidator.isValidBookName(books.getBookName()))
+				&& (AddBookValidator.isValidAuthorName(books.getAuthorName()))
+				&& (AddBookValidator.isValidBookPrice(books.getBookPrice()))
+				&& (AddBookValidator.isValidNoOfBooks(books.getNoOfBooks()))) {
+
+			BookExistsValidator.existsBook(books.getBookName(), books.getAuthorName());
+			BookDetails books1 = new BookDetails(books.getBookName(), books.getAuthorName(), books.getBookPrice(),
+					books.getNoOfBooks());
+			bookList.add(books1);
+
+			BookDao.addBook(books.getBookName(), books.getAuthorName(), books.getBookPrice(), books.getNoOfBooks());
+			isAdded = true;
 		}
 		return isAdded;
 	}
 
 //delete some book in booklist
-	public static boolean deleteBook(String bookName) {
+	public static boolean deleteBook(String bookName, String authorName) {
 
 		boolean isDeleted = false;
 		BookDetails searchProduct = null;
 		for (BookDetails books : bookList) {
 
-			if ((books.getBookName().equalsIgnoreCase(bookName))) {
+			if ((books.getBookName().equalsIgnoreCase(bookName)
+					&& (books.getAuthorName().equalsIgnoreCase(authorName)))) {
 				searchProduct = books;
 				try {
-					BookDao.deleteBook(bookName);
+					BookDao.deleteBook(bookName, authorName);
 				} catch (ClassNotFoundException e) {
 
 					e.printStackTrace();
