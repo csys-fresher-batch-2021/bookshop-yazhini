@@ -36,14 +36,12 @@ public class TestRegistrationDetails {
 				RegistrationDao.addDetails(name, emailId, mobileNo, address);
 
 				for (BookDetails book : TestBookDetails.getBookList()) {
-					if (book.getBookName().equalsIgnoreCase(bookName)) {
-						if (quantity <= book.getNoOfBooks()) {
-							book.setNoOfBooks(book.getNoOfBooks() - quantity);
-						}
+					if (book.getBookName().equalsIgnoreCase(bookName) || (quantity <= book.getNoOfBooks())) {
+						book.setNoOfBooks(book.getNoOfBooks() - quantity);
 					}
 				}
-				isAdded = true;
 			}
+			isAdded = true;
 
 		} catch (Exception e) {
 

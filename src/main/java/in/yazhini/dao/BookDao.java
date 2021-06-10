@@ -15,10 +15,8 @@ public class BookDao {
 	private BookDao() {
 		// default constructor
 	}
-
-	private static final List<BookDetails> bookList = new ArrayList<>();
-
-	public static List<BookDetails> getUser() {
+public List<BookDetails> getAllBookList() throws Throwable{
+	 List<BookDetails> bookList = new ArrayList<>();
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet result = null;

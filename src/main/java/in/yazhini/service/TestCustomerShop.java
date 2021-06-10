@@ -41,7 +41,6 @@ public class TestCustomerShop {
 					shop.setTotalAmount(totalAmount);
 					shop.setGst(gstAmount);
 
-//					purchase.add(shop);
 					CustomerShopDao.addDetails(bookName, noOfBooks, price, totalAmount, gstAmount);
 
 				}

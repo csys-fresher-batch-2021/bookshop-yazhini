@@ -6,7 +6,11 @@ import in.yazhini.model.BookDetails;
 import in.yazhini.service.TestBookDetails;
 
 public class BookExistsValidator {
-	public static void existsBook(String bookName, String authorName) {
+	
+	public BookExistsValidator() {
+	}
+
+	public static void existsBook(String bookName, String authorName)throws Throwable {
 
 		List<BookDetails> bookList = TestBookDetails.getBookList();
 

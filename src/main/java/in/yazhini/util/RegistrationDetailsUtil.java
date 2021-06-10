@@ -19,7 +19,7 @@ public class RegistrationDetailsUtil {
 		Class.forName(driverClass);
 		// Step 2: Get the connection
 		Connection connection = DriverManager.getConnection(url, username, password);
-		// System.out.println("Connection Created");
+		
 		return connection;
 	}
 
