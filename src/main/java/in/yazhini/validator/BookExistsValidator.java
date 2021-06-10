@@ -21,11 +21,11 @@ public class BookExistsValidator {
 
 				if (books.getBookName().equalsIgnoreCase(bookName)) {
 
-					throw new RuntimeException("BookName already Exists");
+					throw new ValidatorException("BookName already Exists");
 				}
 				if (books.getAuthorName().equalsIgnoreCase(authorName)) {
 
-					throw new RuntimeException("AuthorName already Exists");
+					throw new ValidatorException("AuthorName already Exists");
 				}
 			}
 		} catch (Exception e) {
