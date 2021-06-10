@@ -1,5 +1,6 @@
 package in.yazhini.service;
 
+import in.yazhini.dao.BookDao;
 import in.yazhini.dao.CustomerShopDao;
 import in.yazhini.model.BookDetails;
 import in.yazhini.model.CustomerShop;
@@ -17,7 +18,7 @@ public class TestCustomerShop {
 		CustomerShop shop = new CustomerShop();
 
 		try {
-			for (BookDetails book : TestBookDetails.getBookList()) {
+			for (BookDetails book : BookDao.getBookList()) {
 
 				// bookname and noofbooks validation
 

@@ -2,17 +2,18 @@ package in.yazhini.validator;
 
 import java.util.List;
 
+import in.yazhini.dao.BookDao;
 import in.yazhini.model.BookDetails;
-import in.yazhini.service.TestBookDetails;
+
 
 public class BookExistsValidator {
 	
 	public BookExistsValidator() {
 	}
 
-	public static void existsBook(String bookName, String authorName)throws Throwable {
+	public static void existsBook(String bookName, String authorName) {
 
-		List<BookDetails> bookList = TestBookDetails.getBookList();
+		List<BookDetails> bookList = BookDao.getBookList();
 
 		try {
 			for (BookDetails books : bookList) {

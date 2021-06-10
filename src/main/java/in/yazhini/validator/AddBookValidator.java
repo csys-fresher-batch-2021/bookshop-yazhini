@@ -1,6 +1,7 @@
 package in.yazhini.validator;
 
 import java.util.regex.Matcher;
+
 import java.util.regex.Pattern;
 
 public class AddBookValidator {
@@ -15,15 +16,15 @@ public class AddBookValidator {
 	 * @param bookName
 	 * @return
 	 */
-	public static boolean isValidBookName(String bookName) {
-		boolean valid = false;
+	public static void isValidBookName(String bookName) {
+		
 		String condition = "[a-zA-Z\\s*]+";
 		Pattern pattern = Pattern.compile(condition);
 		Matcher matcher = pattern.matcher(bookName);
-		if (matcher.matches()) {
-			return valid = true;
+		if (!matcher.matches()) {
+			throw new RuntimeException("InValid BookName");
 		}
-		return valid;
+		
 	}
 
 	/**
@@ -33,16 +34,15 @@ public class AddBookValidator {
 	 * @param bookName
 	 * @return
 	 */
-	public static boolean isValidAuthorName(String authorName) {
-		boolean valid = false;
+	public static void isValidAuthorName(String authorName) {
 
 		String condition = "[a-zA-Z\\s*]+";
 		Pattern pattern = Pattern.compile(condition);
 		Matcher matcher = pattern.matcher(authorName);
-		if (matcher.matches()) {
-			return valid = true;
+		if (!matcher.matches()) {
+			throw new RuntimeException("InValid AuthorName");
 		}
-		return valid;
+		
 	}
 
 	/**
@@ -51,12 +51,11 @@ public class AddBookValidator {
 	 * @param cost
 	 * @return
 	 */
-	public static boolean isValidBookPrice(float bookPrice) {
-		boolean isValid = false;
-		if (bookPrice > 0) {
-			isValid = true;
+	public static void isValidBookPrice(float bookPrice) {
+	
+		if (bookPrice < 200) {
+			throw new RuntimeException("InValid BookPrice");
 		}
-		return isValid;
 	}
 
 	/**
@@ -65,12 +64,10 @@ public class AddBookValidator {
 	 * @param cost
 	 * @return
 	 */
-	public static boolean isValidNoOfBooks(int noOfBooks) {
-		boolean isValid = false;
-		if (noOfBooks > 0) {
-			isValid = true;
+	public static void isValidNoOfBooks(int noOfBooks) {
+	
+		if (noOfBooks < 10) {
+			throw new RuntimeException("InValid NoOfBooks");
 		}
-		return isValid;
-
-	}
+		}
 }

@@ -40,11 +40,11 @@ public class AddBookServlet extends HttpServlet {
 			books.setBookPrice(bookPrice1);
 			books.setNoOfBooks(noOfBooks1);
 			BookExistsValidator.existsBook(bookName, authorName);
-			boolean isAdded = TestBookDetails.addBook(books);
-			if (isAdded) {
+			
+		      TestBookDetails.addBook(books);
 				String infoMessage = "Successfully Added";
 				response.sendRedirect("ListBookDetails.jsp?infoMessage=" + infoMessage);
-			}
+			
 		} catch (Exception e) {
 			String errorMessage = e.getMessage();
 			response.sendRedirect("AddBook.jsp?errorMessage=" + errorMessage);

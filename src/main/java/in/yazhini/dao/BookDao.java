@@ -15,8 +15,9 @@ public class BookDao {
 	private BookDao() {
 		// default constructor
 	}
-public List<BookDetails> getAllBookList() throws Throwable{
-	 List<BookDetails> bookList = new ArrayList<>();
+	
+public static  List<BookDetails> getBookList(){
+ List<BookDetails> bookList = new ArrayList<>();
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet result = null;
@@ -96,22 +97,46 @@ public List<BookDetails> getAllBookList() throws Throwable{
 	 * @throws SQLException
 	 * 
 	 */
-	public static boolean deleteBook(String bookName, String authorName) throws ClassNotFoundException {
+	public static boolean deleteBook(String bookName, String authorName){
 		Connection connection = null;
 		PreparedStatement pst = null;
 		try {
 			// Get Connection
 			connection = ConnectionUtil.getConnection();
 			// prepare data
-			String sql = "DELETE FROM BookDetails WHERE bookname= ?;";
+			String sql = "DELETE FROM BookDetails WHERE bookname= ? and authorName=? ;";
 
 			// Execute Query
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, bookName);
-			pst.setString(1, authorName);
+			pst.setString(2, authorName);
 			pst.executeUpdate();
 
-		} catch (SQLException e) {
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		} finally {
+
+			ConnectionUtil.close1(connection, pst);
+		}
+		return false;
+
+	}
+	public static boolean updateBook(String bookName, Integer bookQuantity){
+		Connection connection = null;
+		PreparedStatement pst = null;
+		try {
+			// Get Connection
+			connection = ConnectionUtil.getConnection();
+			// prepare data
+			String sql = "update BookDetails set noofbooks=? WHERE bookName =? ;";
+
+			// Execute Query
+			pst = connection.prepareStatement(sql);
+			pst.setString(2, bookName);
+			pst.setInt(1, bookQuantity);
+			pst.executeUpdate();
+
+		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		} finally {
 

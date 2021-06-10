@@ -25,21 +25,17 @@ public class DeleteBookServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String bookName = request.getParameter("BookName");
-		String authorName = request.getParameter("AuthorName");
+		String bookName = request.getParameter("bookName");
+		String authorName = request.getParameter("authorName");
 
 		boolean isDeleted = TestBookDetails.deleteBook(bookName, authorName);
-		try {
+		
 			if (isDeleted) {
 				String infoMessage = "Successfully Deleted";
-				response.sendRedirect("DeleteBook.jsp?infoMessage=" + infoMessage);
+				response.sendRedirect("ListBookDetails.jsp?infoMessage=" + infoMessage);
 			} else {
-				String errorMessage = "Invalid BookName ";
+				String errorMessage = "Unable To Delete BookName ";
 				response.sendRedirect(MSG + errorMessage);
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
 	}
 }

@@ -1,6 +1,7 @@
 <%@page import="java.util.List"%>
 <%@page import="in.yazhini.service.TestBookDetails"%>
 <%@page import="in.yazhini.model.BookDetails"%>
+<%@page import="in.yazhini.dao.BookDao"%>
 <!DOCTYPE html>
 <html lang=en>
 <head>
@@ -32,7 +33,7 @@
 			<tbody>
 				<!-- Scriptlets(java code for display the list of book types) -->
 				<%
-				List<BookDetails> bookList = TestBookDetails.getBookList();
+				List<BookDetails> bookList = BookDao.getBookList();
 				int i = 1;
 				for (BookDetails books : bookList) {
 				%>
