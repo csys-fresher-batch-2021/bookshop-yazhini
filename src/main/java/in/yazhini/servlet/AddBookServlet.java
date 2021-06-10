@@ -1,7 +1,6 @@
 package in.yazhini.servlet;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,6 +32,7 @@ public class AddBookServlet extends HttpServlet {
 			String noOfBooks = request.getParameter("noOfBooks");
 			Float bookPrice1 = Float.parseFloat(bookPrice);
 			int noOfBooks1 = Integer.parseInt(noOfBooks);
+	
 
 			BookDetails books = new BookDetails();
 			books.setBookName(bookName);

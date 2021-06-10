@@ -3,15 +3,16 @@ package in.yazhini.validator;
 import java.util.List;
 
 import in.yazhini.dao.BookDao;
+import in.yazhini.exception.ValidatorException;
 import in.yazhini.model.BookDetails;
 
 
 public class BookExistsValidator {
 	
-	public BookExistsValidator() {
+	private BookExistsValidator() {
 	}
 
-	public static void existsBook(String bookName, String authorName) {
+	public static void existsBook(String bookName, String authorName)throws ValidatorException {
 
 		List<BookDetails> bookList = BookDao.getBookList();
 
@@ -29,7 +30,7 @@ public class BookExistsValidator {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new RuntimeException(e.getMessage());
+			throw new ValidatorException(e.getMessage());
 		}
 	}
 }

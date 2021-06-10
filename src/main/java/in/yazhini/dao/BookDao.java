@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import in.yazhini.exception.DBException;
 import in.yazhini.model.BookDetails;
 import in.yazhini.util.ConnectionUtil;
 
@@ -15,9 +16,9 @@ public class BookDao {
 	private BookDao() {
 		// default constructor
 	}
-	
-public static  List<BookDetails> getBookList(){
- List<BookDetails> bookList = new ArrayList<>();
+
+	public static List<BookDetails> getBookList() throws DBException {
+		List<BookDetails> bookList = new ArrayList<>();
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet result = null;
@@ -42,7 +43,8 @@ public static  List<BookDetails> getBookList(){
 
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
-			throw new RuntimeException("Unable to fetch BookDetails");
+			throw new DBException("Unable to fetch BookDetails");
+
 		} finally {
 			ConnectionUtil.close1(connection, pst);
 		}
@@ -97,7 +99,7 @@ public static  List<BookDetails> getBookList(){
 	 * @throws SQLException
 	 * 
 	 */
-	public static boolean deleteBook(String bookName, String authorName){
+	public static boolean deleteBook(String bookName, String authorName) {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		try {
@@ -121,7 +123,8 @@ public static  List<BookDetails> getBookList(){
 		return false;
 
 	}
-	public static boolean updateBook(String bookName, Integer bookQuantity){
+
+	public static boolean updateBook(String bookName, Integer bookQuantity) {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		try {

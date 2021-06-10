@@ -4,6 +4,8 @@ import java.util.regex.Matcher;
 
 import java.util.regex.Pattern;
 
+import in.yazhini.exception.ValidatorException;
+
 public class AddBookValidator {
 	private AddBookValidator() {
 		// default constructor
@@ -22,7 +24,7 @@ public class AddBookValidator {
 		Pattern pattern = Pattern.compile(condition);
 		Matcher matcher = pattern.matcher(bookName);
 		if (!matcher.matches()) {
-			throw new RuntimeException("InValid BookName");
+			throw new ValidatorException("InValid BookName");
 		}
 		
 	}
@@ -40,7 +42,7 @@ public class AddBookValidator {
 		Pattern pattern = Pattern.compile(condition);
 		Matcher matcher = pattern.matcher(authorName);
 		if (!matcher.matches()) {
-			throw new RuntimeException("InValid AuthorName");
+			throw new ValidatorException("InValid AuthorName");
 		}
 		
 	}
@@ -54,7 +56,7 @@ public class AddBookValidator {
 	public static void isValidBookPrice(float bookPrice) {
 	
 		if (bookPrice < 200) {
-			throw new RuntimeException("InValid BookPrice");
+			throw new ValidatorException("InValid BookPrice");
 		}
 	}
 
@@ -67,7 +69,7 @@ public class AddBookValidator {
 	public static void isValidNoOfBooks(int noOfBooks) {
 	
 		if (noOfBooks < 10) {
-			throw new RuntimeException("InValid NoOfBooks");
+			throw new ValidatorException("InValid NoOfBooks");
 		}
 		}
 }

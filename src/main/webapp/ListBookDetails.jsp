@@ -34,8 +34,9 @@
 				<!-- Scriptlets(java code for display the list of book types) -->
 				<%
 				List<BookDetails> bookList = BookDao.getBookList();
-				int i = 1;
+				int i = 0;
 				for (BookDetails books : bookList) {
+					i++;
 				%>
 				<tr>
 					<td><%=i%></td>
@@ -47,7 +48,6 @@
 
 				</tr>
 				<%
-				i++;
 				}
 				%>
 			
