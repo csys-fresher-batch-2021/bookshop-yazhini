@@ -1,24 +1,24 @@
 package in.yazhini.validator;
 
-import in.yazhini.model.BookDetails;
+import in.yazhini.dao.BookDao;
 
-import in.yazhini.service.TestBookDetails;
+import in.yazhini.model.BookDetails;
 
 public class CustomerShopValidator {
 	private CustomerShopValidator() {
-		
+
 	}
+
 	public static boolean isValidQuantity(int noOfBooks, String bookName) {
 		boolean isValid = false;
 		int quantity = 0;
-		for (BookDetails add : TestBookDetails.getBookList()) {
+		for (BookDetails book : BookDao.getBookList()) {
 
 			// bookname and noofbooks validation
-			if (add.getBookName().equalsIgnoreCase(bookName)) {
-				quantity = add.getNoOfBooks();
-				
-				if (quantity > noOfBooks) {
+			if (book.getBookName().equalsIgnoreCase(bookName)) {
+				quantity = book.getNoOfBooks();
 
+				if (quantity >= noOfBooks) {
 					isValid = true;
 				}
 			}

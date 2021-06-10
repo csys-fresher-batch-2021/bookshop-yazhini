@@ -1,11 +1,35 @@
 package in.yazhini.model;
 
 public class CustomerShop {
+	public CustomerShop() {
+
+	}
+
 	private String bookName;
 	private Integer noOfBooks;
 	private Double price;
 	private Double totalAmount;
 	private double gst;
+
+	public void setBookName(String bookName) {
+		this.bookName = bookName;
+	}
+
+	public void setNoOfBooks(Integer noOfBooks) {
+		this.noOfBooks = noOfBooks;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
+	public void setTotalAmount(Double totalAmount) {
+		this.totalAmount = totalAmount;
+	}
+
+	public void setGst(double gst) {
+		this.gst = gst;
+	}
 
 //create a constructor to the details
 	public String getBookName() {

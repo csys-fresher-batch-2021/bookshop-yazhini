@@ -30,13 +30,13 @@ public class AddDetailsServlet extends HttpServlet {
 		String mobileNo = request.getParameter("mobileNo"); // covert a mobileNo in long
 		long number = Long.parseLong(mobileNo);
 		String address = request.getParameter("address");
-
-		boolean isAdded = TestRegistrationDetails.addDetails(name, emailId, number, address);
-
 		try {
+			int quantity = Integer.parseInt(request.getParameter("quantity"));
+			String bookName = request.getParameter("bookName");
+			boolean isAdded = TestRegistrationDetails.addDetails(name, emailId, number, address, quantity, bookName);
 			if (isAdded) {
-				String errorMessage = "Successfully Added";
-				response.sendRedirect("End.jsp?errorMessage=" + errorMessage);
+				String infoMessage = "Successfully Added";
+				response.sendRedirect("End.jsp?infoMessage=" + infoMessage);
 			} else {
 				String errorMessage = "Invalid Details Credentials";
 				response.sendRedirect(MSG + errorMessage);

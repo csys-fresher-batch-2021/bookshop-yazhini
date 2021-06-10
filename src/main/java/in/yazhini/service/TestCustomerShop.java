@@ -1,9 +1,6 @@
 package in.yazhini.service;
 
-import java.util.ArrayList;
-
-import java.util.List;
-
+import in.yazhini.dao.BookDao;
 import in.yazhini.dao.CustomerShopDao;
 import in.yazhini.model.BookDetails;
 import in.yazhini.model.CustomerShop;
@@ -14,23 +11,23 @@ public class TestCustomerShop {
 
 	}
 
-	private static final List<CustomerShop> purchase = new ArrayList<>();
-
 	// store the details in list
-	public static boolean shoppingList(String bookName, int noOfBooks) {
-		boolean isAdded = false;
+	public static CustomerShop shoppingList(String bookName, int noOfBooks) {
 		double price = 0;
 		double gst = 0.05;
-		for (BookDetails add : TestBookDetails.getBookList()) {
+		CustomerShop shop = new CustomerShop();
 
-			// bookname and noofbooks validation
-			try {
-				if (add.getBookName().equalsIgnoreCase(bookName)
+		try {
+			for (BookDetails book : BookDao.getBookList()) {
+
+				// bookname and noofbooks validation
+
+				if (book.getBookName().equalsIgnoreCase(bookName)
 						&& CustomerShopValidator.isValidQuantity(noOfBooks, bookName)) {
 
 					// get the bookprice
 
-					price = add.getBookPrice();
+					price = book.getBookPrice();
 
 					// validate the price and noofbooks
 
@@ -39,22 +36,21 @@ public class TestCustomerShop {
 					// validate the totalamount and gst
 					double gstAmount = (totalAmount * gst) + totalAmount;
 
-					CustomerShop shop = new CustomerShop(bookName, noOfBooks, price, totalAmount, gstAmount);
-					purchase.add(shop);
+					shop.setBookName(bookName);
+					shop.setNoOfBooks(noOfBooks);
+					shop.setPrice(price);
+					shop.setTotalAmount(totalAmount);
+					shop.setGst(gstAmount);
+
 					CustomerShopDao.addDetails(bookName, noOfBooks, price, totalAmount, gstAmount);
-					isAdded = true;
-					break;
 
 				}
-			} catch (Exception e) {
 
-				e.printStackTrace();
 			}
-		}
-		return isAdded;
-	}
+		} catch (ClassNotFoundException e) {
 
-	public static List<CustomerShop> getOrders() {
-		return purchase;
+			e.printStackTrace();
+		}
+		return shop;
 	}
 }

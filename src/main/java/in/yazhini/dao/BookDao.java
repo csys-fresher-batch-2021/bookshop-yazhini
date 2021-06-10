@@ -3,14 +3,52 @@ package in.yazhini.dao;
 import java.sql.Connection;
 
 import java.sql.PreparedStatement;
-
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import in.yazhini.exception.DBException;
+import in.yazhini.model.BookDetails;
 import in.yazhini.util.ConnectionUtil;
 
 public class BookDao {
 	private BookDao() {
 		// default constructor
+	}
+
+	public static List<BookDetails> getBookList() throws DBException {
+		List<BookDetails> bookList = new ArrayList<>();
+		Connection connection = null;
+		PreparedStatement pst = null;
+		ResultSet result = null;
+		try {
+			connection = ConnectionUtil.getConnection();
+			String sql = "select * from BookDetails";
+			pst = connection.prepareStatement(sql);
+			result = pst.executeQuery();
+			while (result.next()) {
+				BookDetails user = new BookDetails();
+				String bookName = result.getString("bookName");
+				String authorName = result.getString("authorName");
+				Float bookPrice = result.getFloat("bookPrice");
+				Integer noOfBooks = result.getInt("noOfBooks");
+
+				user.setBookName(bookName);
+				user.setAuthorName(authorName);
+				user.setBookPrice(bookPrice);
+				user.setNoOfBooks(noOfBooks);
+				bookList.add(user);
+			}
+
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+			throw new DBException("Unable to fetch BookDetails");
+
+		} finally {
+			ConnectionUtil.close1(connection, pst);
+		}
+		return bookList;
 	}
 
 	/**
@@ -43,7 +81,7 @@ public class BookDao {
 			pst.executeUpdate();
 			// Execute Query
 
-		} catch (SQLException e) {
+		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		} finally {
 
@@ -61,21 +99,22 @@ public class BookDao {
 	 * @throws SQLException
 	 * 
 	 */
-	public static boolean deleteBook(String bookName) throws ClassNotFoundException {
+	public static boolean deleteBook(String bookName, String authorName) {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		try {
 			// Get Connection
 			connection = ConnectionUtil.getConnection();
 			// prepare data
-			String sql = "DELETE FROM BookDetails WHERE bookname= ?;";
+			String sql = "DELETE FROM BookDetails WHERE bookname= ? and authorName=? ;";
 
 			// Execute Query
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, bookName);
+			pst.setString(2, authorName);
 			pst.executeUpdate();
 
-		} catch (SQLException e) {
+		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		} finally {
 
@@ -85,4 +124,28 @@ public class BookDao {
 
 	}
 
+	public static boolean updateBook(String bookName, Integer bookQuantity) {
+		Connection connection = null;
+		PreparedStatement pst = null;
+		try {
+			// Get Connection
+			connection = ConnectionUtil.getConnection();
+			// prepare data
+			String sql = "update BookDetails set noofbooks=? WHERE bookName =? ;";
+
+			// Execute Query
+			pst = connection.prepareStatement(sql);
+			pst.setString(2, bookName);
+			pst.setInt(1, bookQuantity);
+			pst.executeUpdate();
+
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		} finally {
+
+			ConnectionUtil.close1(connection, pst);
+		}
+		return false;
+
+	}
 }

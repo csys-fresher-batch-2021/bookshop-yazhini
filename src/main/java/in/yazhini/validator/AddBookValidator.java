@@ -1,5 +1,11 @@
 package in.yazhini.validator;
 
+import java.util.regex.Matcher;
+
+import java.util.regex.Pattern;
+
+import in.yazhini.exception.ValidatorException;
+
 public class AddBookValidator {
 	private AddBookValidator() {
 		// default constructor
@@ -12,14 +18,15 @@ public class AddBookValidator {
 	 * @param bookName
 	 * @return
 	 */
-	public static boolean isValidBookName(String bookName) {
-		boolean isValid = true;
-
-		String regex = ".*[0-9@$%^=()./#&+-].*";
-		if (bookName == null || bookName.trim().equals("") || bookName.matches(regex) || bookName.length() < 3) {
-			isValid = false;
+	public static void isValidBookName(String bookName) {
+		
+		String condition = "[a-zA-Z\\s*]+";
+		Pattern pattern = Pattern.compile(condition);
+		Matcher matcher = pattern.matcher(bookName);
+		if (!matcher.matches()) {
+			throw new ValidatorException("InValid BookName");
 		}
-		return isValid;
+		
 	}
 
 	/**
@@ -29,15 +36,15 @@ public class AddBookValidator {
 	 * @param bookName
 	 * @return
 	 */
-	public static boolean isValidAuthorName(String authorName) {
-		boolean isValid = true;
+	public static void isValidAuthorName(String authorName) {
 
-		String regex = ".*[0-9@$%^=()./#&+-].*";
-		if (authorName == null || authorName.trim().equals("") || authorName.matches(regex)
-				|| authorName.length() < 3) {
-			isValid = false;
+		String condition = "[a-zA-Z\\s*]+";
+		Pattern pattern = Pattern.compile(condition);
+		Matcher matcher = pattern.matcher(authorName);
+		if (!matcher.matches()) {
+			throw new ValidatorException("InValid AuthorName");
 		}
-		return isValid;
+		
 	}
 
 	/**
@@ -46,12 +53,11 @@ public class AddBookValidator {
 	 * @param cost
 	 * @return
 	 */
-	public static boolean isValidBookPrice(Float bookPrice) {
-		boolean isValid = false;
-		if (bookPrice > 0) {
-			isValid = true;
+	public static void isValidBookPrice(float bookPrice) {
+	
+		if (bookPrice < 200) {
+			throw new ValidatorException("InValid BookPrice");
 		}
-		return isValid;
 	}
 
 	/**
@@ -60,13 +66,10 @@ public class AddBookValidator {
 	 * @param cost
 	 * @return
 	 */
-	public static boolean isValidNoOfBooks(int noOfBooks) {
-		boolean isValid = false;
-		if (noOfBooks > 0) {
-			isValid = true;
+	public static void isValidNoOfBooks(int noOfBooks) {
+	
+		if (noOfBooks < 10) {
+			throw new ValidatorException("InValid NoOfBooks");
 		}
-		return isValid;
-
-	}
-
+		}
 }

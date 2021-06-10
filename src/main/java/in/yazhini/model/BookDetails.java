@@ -1,12 +1,32 @@
 package in.yazhini.model;
 
 public class BookDetails {
+	public BookDetails() {
+		super();
+
+	}
+
 	private String bookName;
 	private String authorName;
 	private Float bookPrice;
 	private Integer noOfBooks;
 
-//create a constructor to the details
+	public void setBookName(String bookName) {
+		this.bookName = bookName;
+	}
+
+	public void setAuthorName(String authorName) {
+		this.authorName = authorName;
+	}
+
+	public void setBookPrice(Float bookPrice) {
+		this.bookPrice = bookPrice;
+	}
+
+	public void setNoOfBooks(Integer noOfBooks) {
+		this.noOfBooks = noOfBooks;
+	}
+
 	public String getBookName() {
 		return bookName;
 	}
@@ -19,7 +39,7 @@ public class BookDetails {
 		return bookPrice;
 	}
 
-	public Integer getNoOfBooks() {
+	public int getNoOfBooks() {
 		return noOfBooks;
 	}
 
@@ -29,6 +49,7 @@ public class BookDetails {
 		this.authorName = authorName;
 		this.bookPrice = bookPrice;
 		this.noOfBooks = noOfBooks;
+
 	}
 
 	// To declare the Booklist in purpose of retrieve
@@ -37,4 +58,5 @@ public class BookDetails {
 		return "BookDetails [bookName=" + bookName + ", authorName=" + authorName + ", bookPrice=" + bookPrice
 				+ ", noOfBooks=" + noOfBooks + "]";
 	}
+
 }

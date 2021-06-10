@@ -8,6 +8,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+<% 
+String bookName = request.getParameter("bookName");
+String noOfBooks = request.getParameter("noOfBooks");
+String price = request.getParameter("price");
+String totalAmount = request.getParameter("totalAmount");
+String gstAmount = request.getParameter("gstAmount");
+%>
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<h3>YOUR TOTAL BILL AMOUNT :</h3>
@@ -22,38 +29,28 @@
 					<th scope="col">TotalPrice</th>
 					<th scope="col">TotalAmount=TotalPrice + GST</th>
 					<th scope="col">Confirm order</th>
-					<th scope="col">Order Cancel</th>
+					
 				</tr>
 			</thead>
 			<tbody>
 				<!--  Scriptlets ( Java Code ) -->
 				<!--  %= Expression - variable value -->
 				<!--  Dynamic  -->
-				<%
-				List<CustomerShop> orders = TestCustomerShop.getOrders();
-				int i = 0;
-				for (CustomerShop order : orders) {
-					i++;
-				%>
 
 				<tr>
 
-					<td><%=order.getBookName()%></td>
-					<td><%=order.getNoOfBooks()%></td>
-					<td><%=order.getPrice()%></td>
-					<td><%=order.getTotalAmount()%></td>
-					<td><%=order.getGst()%></td>
-					<td><a href="Registration.jsp" class="btn btn-danger">ORDER
+					<td><%=bookName%></td>
+					<td><%=noOfBooks%></td>
+					<td><%=price%></td>
+					<td><%=totalAmount%></td>
+					<td><%=gstAmount%></td>
+					<td><a href="Registration.jsp?bookName=<%=bookName%>&quantity=<%=noOfBooks%>"  
+					class="btn btn-danger">ORDER
 							NOW</a></td>
 
 
 				</tr>
-				<%
-				}
-				%>
-
-
-			</tbody>
+				</tbody>
 		</table>
 
 	</main>
