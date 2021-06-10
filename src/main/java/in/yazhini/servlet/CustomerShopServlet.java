@@ -1,8 +1,6 @@
 package in.yazhini.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,8 +26,6 @@ public class CustomerShopServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		String bookName = request.getParameter("bookName");
-		 PrintWriter out = response.getWriter();
-		 out.write(bookName);
 		String noOfBooks = request.getParameter("noOfBooks");
 		try {
 			int quantity = Integer.parseInt(noOfBooks);
