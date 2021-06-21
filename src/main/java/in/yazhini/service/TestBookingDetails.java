@@ -9,7 +9,7 @@ import in.yazhini.validator.RegistrationValidator;
 
 public class TestBookingDetails {
 
-	public TestBookingDetails() {
+	private TestBookingDetails() {
 		//default constructor
 	}
 

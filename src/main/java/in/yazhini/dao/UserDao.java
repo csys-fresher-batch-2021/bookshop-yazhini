@@ -14,6 +14,9 @@ import in.yazhini.model.UserDetails;
 import in.yazhini.util.ConnectionUtil;
 
 public class UserDao {
+	private UserDao() {
+		//default costructor
+	}
 	public static boolean addUser(UserDetails users) throws ClassNotFoundException {
 		Connection connection = null;
 		PreparedStatement pst = null;
@@ -59,7 +62,6 @@ public class UserDao {
 				String password = result.getString("password");
 
 				user.setUserId(userId);
-				;
 				user.setUserName(userName);
 				user.setPassword(password);
 

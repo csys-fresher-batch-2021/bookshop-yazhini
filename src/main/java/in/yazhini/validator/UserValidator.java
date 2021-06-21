@@ -9,6 +9,9 @@ import in.yazhini.exception.ValidatorException;
 import in.yazhini.model.UserDetails;
 
 public class UserValidator {
+	private UserValidator() {
+		
+	}
 	public static void isValidUserName(String userName) {
 
 		String condition = "[a-zA-Z\\s*]+";

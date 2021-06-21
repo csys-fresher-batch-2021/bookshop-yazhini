@@ -8,9 +8,7 @@ import in.yazhini.validator.AddBookValidator;
 import in.yazhini.validator.BookExistsValidator;
 
 public class TestBookDetails {
-	private TestBookDetails() {
-	//Default constructor
-	}
+	
 
 //add some books in a bookdetails in dao
 	public static void addBook(BookDetails books) throws ServiceException {

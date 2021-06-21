@@ -9,7 +9,7 @@ import in.yazhini.validator.UserValidator;
 
 public class TestUser {
 	
-	public TestUser() {
+	private TestUser() {
 	//default constructor	
 	}
 
