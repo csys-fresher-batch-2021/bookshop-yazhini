@@ -19,14 +19,22 @@ String role = (String) session.getAttribute("ROLE");
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 				<li class="nav-item active"><a class="nav-link"
 					href="index.jsp">Home <span class="sr-only">(current)</span></a></li>
+				<%
+				if (loggedInUsername == null) {
+				%>
+				<li class="nav-item"><a class="nav-link"
+					href="UserRegister.jsp">CreateAccount</a></li>
 
 				<%
+				}
 				if (loggedInUsername != null && role != null && role.equalsIgnoreCase("ADMIN")) {
 				%>
 				<li class="nav-item"><a class="nav-link"
 					href="ListBookDetails.jsp">Books</a></li>
 				<li class="nav-item"><a class="nav-link" href="Modify.jsp">MODIFY</a></li>
-                
+				<li class="nav-item"><a class="nav-link"
+					href="AllBookingServlet">All Orders</a></li>
+
 				<%
 				}
 				%>
@@ -36,8 +44,10 @@ String role = (String) session.getAttribute("ROLE");
 				<li class="nav-item"><a class="nav-link"
 					href="ListBookDetails.jsp">Books</a></li>
 				<li class="nav-item"><a class="nav-link"
-					href="CustomerShop.jsp">ORDER</a></li>
-				
+					href="CustomerShop.jsp">ORDER NOW</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="UserBookingsServlet">My Orders</a></li>
+
 				<%
 				}
 				%>

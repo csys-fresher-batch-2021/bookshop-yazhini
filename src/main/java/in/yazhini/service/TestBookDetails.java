@@ -1,19 +1,21 @@
 package in.yazhini.service;
 
 import in.yazhini.dao.BookDao;
+import in.yazhini.exception.DBException;
 import in.yazhini.exception.ServiceException;
 import in.yazhini.model.BookDetails;
 import in.yazhini.validator.AddBookValidator;
 import in.yazhini.validator.BookExistsValidator;
 
 public class TestBookDetails {
-	private TestBookDetails() {
-	}
+	
 
-//add some books in a book list
+//add some books in a bookdetails in dao
 	public static void addBook(BookDetails books) throws ServiceException {
 
 		try {
+           //Validation of bookdetails
+			AddBookValidator.isValidBookName(books.getBookName());
 			AddBookValidator.isValidBookName(books.getBookName());
 			AddBookValidator.isValidAuthorName(books.getAuthorName());
 			AddBookValidator.isValidBookPrice(books.getBookPrice());
@@ -27,24 +29,27 @@ public class TestBookDetails {
 		}
 	}
 
-//delete some book in booklist
-	public static boolean deleteBook(String bookName, String authorName) {
-
-		boolean isDeleted = false;
-		BookDetails searchProduct = null;
-		for (BookDetails books : BookDao.getBookList()) {
-
-			if (books.getBookName().equalsIgnoreCase(bookName) && books.getAuthorName().equalsIgnoreCase(authorName)) {
-				BookDao.deleteBook(bookName, authorName);
-				searchProduct = books;
-				break;
+       //delete some book in booklist
+	public static void deleteBook( String bookName, String authorName) {
+		boolean isValid=false;
+		
+		try {
+			for (BookDetails books : BookDao.getBookList()) {
+                  
+				if (books.getBookName().equals(bookName)
+						&& books.getAuthorName().equals(authorName)) {
+					BookDao.deleteBook( bookName, authorName);
+			      isValid=true;
+					break;
+				}
 			}
+		if(!isValid) {
+			throw new ServiceException("No Mathching Books Found");
 		}
-		if (searchProduct != null) {
-			BookDao.getBookList().remove(searchProduct);
-			isDeleted = true;
+		} catch (DBException e) {
+			e.printStackTrace();
+			throw new ServiceException(e.getMessage());
 		}
-		return isDeleted;
 	}
 
 }

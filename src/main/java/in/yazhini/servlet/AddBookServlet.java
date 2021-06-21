@@ -26,25 +26,26 @@ public class AddBookServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
+
 			String bookName = request.getParameter("bookName");
 			String authorName = request.getParameter("authorName");
 			String bookPrice = request.getParameter("bookPrice");
 			String noOfBooks = request.getParameter("noOfBooks");
 			Float bookPrice1 = Float.parseFloat(bookPrice);
 			int noOfBooks1 = Integer.parseInt(noOfBooks);
-	
 
 			BookDetails books = new BookDetails();
+
 			books.setBookName(bookName);
 			books.setAuthorName(authorName);
 			books.setBookPrice(bookPrice1);
 			books.setNoOfBooks(noOfBooks1);
 			BookExistsValidator.existsBook(bookName, authorName);
-			
-		      TestBookDetails.addBook(books);
-				String infoMessage = "Successfully Added";
-				response.sendRedirect("ListBookDetails.jsp?infoMessage=" + infoMessage);
-			
+
+			TestBookDetails.addBook(books);
+			String infoMessage = "Successfully Added";
+			response.sendRedirect("ListBookDetails.jsp?infoMessage=" + infoMessage);
+
 		} catch (Exception e) {
 			String errorMessage = e.getMessage();
 			response.sendRedirect("AddBook.jsp?errorMessage=" + errorMessage);

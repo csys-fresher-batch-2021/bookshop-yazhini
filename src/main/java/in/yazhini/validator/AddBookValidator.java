@@ -19,14 +19,14 @@ public class AddBookValidator {
 	 * @return
 	 */
 	public static void isValidBookName(String bookName) {
-		
+
 		String condition = "[a-zA-Z\\s*]+";
 		Pattern pattern = Pattern.compile(condition);
 		Matcher matcher = pattern.matcher(bookName);
 		if (!matcher.matches()) {
 			throw new ValidatorException("InValid BookName");
 		}
-		
+
 	}
 
 	/**
@@ -44,7 +44,7 @@ public class AddBookValidator {
 		if (!matcher.matches()) {
 			throw new ValidatorException("InValid AuthorName");
 		}
-		
+
 	}
 
 	/**
@@ -54,9 +54,9 @@ public class AddBookValidator {
 	 * @return
 	 */
 	public static void isValidBookPrice(float bookPrice) {
-	
+
 		if (bookPrice < 200) {
-			throw new ValidatorException("InValid BookPrice");
+			throw new ValidatorException("!!!!  Starting BookPrice Is 200 !!!!");
 		}
 	}
 
@@ -67,9 +67,9 @@ public class AddBookValidator {
 	 * @return
 	 */
 	public static void isValidNoOfBooks(int noOfBooks) {
-	
+
 		if (noOfBooks < 10) {
-			throw new ValidatorException("InValid NoOfBooks");
+			throw new ValidatorException("!!!!  Available Books Start With 10  !!!! ");
 		}
-		}
+	}
 }

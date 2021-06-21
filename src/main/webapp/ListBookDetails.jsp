@@ -5,8 +5,36 @@
 <!DOCTYPE html>
 <html lang=en>
 <head>
+<style>
+#bill {
+	font-family: Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+#bill td, #customers th {
+	border: 1px solid #ddd;
+	padding: 8px;
+}
+
+#bill tr:nth-child(even) {
+	background-color: #F2F2F2;
+}
+
+#bill tr:hover {
+	background-color: #ddd;
+}
+
+#bill th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: #4FF6D1;
+	color: blue;
+}
+</style>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>ListBooks</title>
 </head>
 <body>
 <body>
@@ -14,12 +42,12 @@
 	<main class="container-fluid">
 		<h3>Book Details:</h3>
 		<%
-           String infoMessage = request.getParameter("infoMessage");
-		    if (infoMessage != null) {
+		String infoMessage = request.getParameter("infoMessage");
+		if (infoMessage != null) {
 			out.println("<font color='green'>" + infoMessage + "</font>");
 		}
-		 %>
-		<table class="table table-bordered">
+		%>
+		<table class="table table-bordered" id="bill">
 			<caption>List of Books</caption>
 			<thead>
 				<tr>

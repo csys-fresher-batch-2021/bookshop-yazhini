@@ -29,11 +29,13 @@ public class BookDao {
 			result = pst.executeQuery();
 			while (result.next()) {
 				BookDetails user = new BookDetails();
+				Integer bookId = result.getInt("id");
 				String bookName = result.getString("bookName");
 				String authorName = result.getString("authorName");
 				Float bookPrice = result.getFloat("bookPrice");
 				Integer noOfBooks = result.getInt("noOfBooks");
 
+				user.setBookId(bookId);
 				user.setBookName(bookName);
 				user.setAuthorName(authorName);
 				user.setBookPrice(bookPrice);
@@ -99,23 +101,25 @@ public class BookDao {
 	 * @throws SQLException
 	 * 
 	 */
-	public static boolean deleteBook(String bookName, String authorName) {
+	public static boolean deleteBook( String bookName, String authorName) {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		try {
 			// Get Connection
 			connection = ConnectionUtil.getConnection();
 			// prepare data
-			String sql = "DELETE FROM BookDetails WHERE bookname= ? and authorName=? ;";
+			String sql = "DELETE FROM BookDetails WHERE bookname= ? and authorname=? ";
 
 			// Execute Query
 			pst = connection.prepareStatement(sql);
+			
 			pst.setString(1, bookName);
 			pst.setString(2, authorName);
 			pst.executeUpdate();
 
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
+			throw new DBException("The Book Is Already Booked By the User So Unable to Delete Books");
 		} finally {
 
 			ConnectionUtil.close1(connection, pst);
@@ -123,7 +127,6 @@ public class BookDao {
 		return false;
 
 	}
-
 	public static boolean updateBook(String bookName, Integer bookQuantity) {
 		Connection connection = null;
 		PreparedStatement pst = null;

@@ -6,13 +6,13 @@ import in.yazhini.dao.BookDao;
 import in.yazhini.exception.ValidatorException;
 import in.yazhini.model.BookDetails;
 
-
 public class BookExistsValidator {
-	
+
 	private BookExistsValidator() {
+		// default constructor
 	}
 
-	public static void existsBook(String bookName, String authorName)throws ValidatorException {
+	public static void existsBook(String bookName, String authorName) throws ValidatorException {
 
 		List<BookDetails> bookList = BookDao.getBookList();
 

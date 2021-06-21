@@ -5,19 +5,26 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>TotalBill</title>
 </head>
 <body>
-<% 
-String bookName = request.getParameter("bookName");
-String noOfBooks = request.getParameter("noOfBooks");
-String price = request.getParameter("price");
-String totalAmount = request.getParameter("totalAmount");
-String gstAmount = request.getParameter("gstAmount");
-%>
+	<%
+	String bookId = request.getParameter("bookId");
+	String bookName = request.getParameter("bookName");
+	String noOfBooks = request.getParameter("noOfBooks");
+	String price = request.getParameter("price");
+	String totalAmount = request.getParameter("totalAmount");
+	String gstAmount = request.getParameter("gstAmount");
+	%>
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<h3>YOUR TOTAL BILL AMOUNT :</h3>
+		<%
+		String infoMessage = request.getParameter("infoMessage");
+		if (infoMessage != null) {
+			out.println("<font color='green'>" + infoMessage + "</font>");
+		}
+		%>
 		<table class="table table-bordered">
 			<caption>Display Bill</caption>
 			<thead>
@@ -29,7 +36,7 @@ String gstAmount = request.getParameter("gstAmount");
 					<th scope="col">TotalPrice</th>
 					<th scope="col">TotalAmount=TotalPrice + GST</th>
 					<th scope="col">Confirm order</th>
-					
+
 				</tr>
 			</thead>
 			<tbody>
@@ -44,13 +51,13 @@ String gstAmount = request.getParameter("gstAmount");
 					<td><%=price%></td>
 					<td><%=totalAmount%></td>
 					<td><%=gstAmount%></td>
-					<td><a href="Registration.jsp?bookName=<%=bookName%>&quantity=<%=noOfBooks%>"  
-					class="btn btn-danger">ORDER
-							NOW</a></td>
+					<td><a
+						href="Registration.jsp?bookName=<%=bookName%>&bookId=<%=bookId%>&gstAmount=<%=gstAmount%>&quantity=<%=noOfBooks%>"
+						class="btn btn-danger">ORDER NOW</a></td>
 
 
 				</tr>
-				</tbody>
+			</tbody>
 		</table>
 
 	</main>
