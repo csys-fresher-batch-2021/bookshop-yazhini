@@ -2,32 +2,60 @@
 <html lang="en">
 <head>
 <title>BookApp</title>
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
-
-		<h2>LOGIN PAGE</h2>
+		<h3 class="card-title mt-3 text-center">LOGIN PAGE</h3>
 		<%
 		String errorMessage = request.getParameter("errorMessage");
 		if (errorMessage != null) {
 			out.println("<font color='red'>" + errorMessage + "</font>");
 		}
 		%>
+		<div class="card bg-light">
+			<article class="card-body mx-auto" style="max-width: 400px;">
 
-		<form action="LoginServlet" method="Post">
-			<br /> <label for="name">UserName: </label> <input type="text"
-				name="name" id="name" placeholder="UserName" size="20" autofocus
-				required> <br> <br> <label for="name">Password:
-			</label> <input type="Password" name="password" id="password"
-				placeholder="Password" size="20" required> <br> <br>
-			<input type="radio" name="role" id="A" required value="ADMIN">ADMIN
-			<br /> <input type="radio" name="role" id="C" required
-				value="CUSTOMER">CUSTOMER<br> <br />
+				<form action="LoginServlet" method="Post">
 
-			<button class="btn btn-primary">LOGIN</button>
-			<button class="btn btn-secondary" type="reset">Reset</button>
-		</form>
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> <em class="fa fa-user"
+								style="font-size: 24px"></em>
+							</span>
+						</div>
+
+						<input name="name" class="form-control"
+							placeholder="EnterUserName" autocomplete="off" type="text"
+							required>
+					</div>
+
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> <em class="fa fa-lock"
+								style="font-size: 24px"></em>
+							</span>
+						</div>
+
+						<input name="password" class="form-control" placeholder="Password"
+							autocomplete="off" type="Password" required>
+					</div>
+
+					<div class="form-group">
+						<input type="radio" name="role" id="A" required value="ADMIN">ADMIN<br />
+						<input type="radio" name="role" id="C" required value="CUSTOMER">CUSTOMER<br>
+						<br />
+					</div>
+
+					<div class="form-group">
+						<button class="btn btn-primary btn-block">LOGIN</button>
+						<button class="btn btn-secondary btn-block" type="reset">Reset</button>
+					</div>
+				</form>
+			</article>
+		</div>
 	</main>
 </body>
 </html>

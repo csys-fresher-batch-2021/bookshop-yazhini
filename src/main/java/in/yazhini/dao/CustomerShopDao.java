@@ -5,7 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import in.yazhini.util.CustomerShopUtil;
+import in.yazhini.util.ConnectionUtil;
 
 public class CustomerShopDao {
 	private CustomerShopDao() {
@@ -19,10 +19,11 @@ public class CustomerShopDao {
 		// Get Connection
 		boolean inserted = false;
 		try {
-			connection = CustomerShopUtil.getConnection();
+			connection = ConnectionUtil.getConnection();
 			// prepare data
-			String sql = "insert into BillPage(BookName,NoOfBooks,Price,TotalAmount,GstAmount) values (?,?,?,?,?)";
+			String sql = "insert into customershop(BookName,NoOfBooks,Price,TotalAmount,GstAmount) values (?,?,?,?,?)";
 			pst = connection.prepareStatement(sql);
+
 			pst.setString(1, bookName);
 			pst.setInt(2, noOfBooks);
 			pst.setDouble(3, price);
@@ -36,7 +37,7 @@ public class CustomerShopDao {
 
 		} finally {
 
-			CustomerShopUtil.close1(connection, pst);
+			ConnectionUtil.close1(connection, pst);
 
 		}
 		return inserted;

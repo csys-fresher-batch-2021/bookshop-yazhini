@@ -5,7 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import in.yazhini.util.RegistrationDetailsUtil;
+import in.yazhini.util.ConnectionUtil;
 
 public class RegistrationDao {
 
@@ -20,9 +20,9 @@ public class RegistrationDao {
 		// Get Connection
 		boolean inserted = false;
 		try {
-			connection = RegistrationDetailsUtil.getConnection();
+			connection = ConnectionUtil.getConnection();
 			// prepare data
-			String sql = "insert into registration1(name,emailid,mobileno,address) values (?,?,?,?)";
+			String sql = "insert into registration(name,emailid,mobileno,address) values (?,?,?,?)";
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, name);
 			pst.setString(2, emailId);
@@ -36,7 +36,7 @@ public class RegistrationDao {
 
 		} finally {
 
-			RegistrationDetailsUtil.close1(connection, pst);
+			ConnectionUtil.close1(connection, pst);
 
 		}
 		return inserted;

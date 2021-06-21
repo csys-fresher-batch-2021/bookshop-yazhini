@@ -1,11 +1,11 @@
 package in.yazhini.validator;
 
+import in.yazhini.dao.UserDao;
+import in.yazhini.model.UserDetails;
+
 public class LoginPage {
-
-	// create a costructor to theclass
-
 	private LoginPage() {
-
+		// default constructor
 	}
 
 //admin login to the standard input
@@ -17,11 +17,16 @@ public class LoginPage {
 		return isAdmin;
 	}
 
-// customer login to the standard input
-	public static boolean customerLogin(String userName, String password, String role) {
+// customer login  to store the database
+	public static boolean customerLogin(String userName, String password) {
 		boolean isCustomer = false;
-		if (userName.trim().equals("Kani") && password.trim().equals("kani123") && role.trim().equals("CUSTOMER")) {
-			isCustomer = true;
+		for (UserDetails user : UserDao.getUserList()) {
+
+			if (userName.trim().equals(user.getUserName()) && password.trim().equals(user.getPassword())) {
+				isCustomer = true;
+				break;
+			}
+
 		}
 		return isCustomer;
 	}

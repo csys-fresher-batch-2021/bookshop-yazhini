@@ -1,15 +1,35 @@
 package in.yazhini.model;
 
+import java.time.LocalDate;
+
 public class CustomerShop {
 	public CustomerShop() {
-
+		// default constructor
 	}
 
+	public Integer getBookId() {
+		return bookId;
+	}
+
+	public void setBookId(Integer bookId) {
+		this.bookId = bookId;
+	}
+
+	private Integer bookId;
 	private String bookName;
 	private Integer noOfBooks;
 	private Double price;
 	private Double totalAmount;
 	private double gst;
+	private LocalDate date;
+
+	public LocalDate getDate() {
+		return date;
+	}
+
+	public void setDate(LocalDate date) {
+		this.date = date;
+	}
 
 	public void setBookName(String bookName) {
 		this.bookName = bookName;
@@ -31,7 +51,6 @@ public class CustomerShop {
 		this.gst = gst;
 	}
 
-//create a constructor to the details
 	public String getBookName() {
 		return bookName;
 	}
@@ -52,19 +71,10 @@ public class CustomerShop {
 		return gst;
 	}
 
-	public CustomerShop(String bookName, Integer noOfBooks, Double price, Double totalAmount, Double gst) {
-		super();
-		this.bookName = bookName;
-		this.noOfBooks = noOfBooks;
-		this.price = price;
-		this.totalAmount = totalAmount;
-		this.gst = gst;
-	}
-
 	@Override
 	public String toString() {
-		return "CustomerShop [bookName=" + bookName + ", noOfBooks=" + noOfBooks + ", price=" + price + ", totalAmount="
-				+ totalAmount + ", gst=" + gst + "]";
+		return "CustomerShop [bookId=" + bookId + ", bookName=" + bookName + ", noOfBooks=" + noOfBooks + ", price="
+				+ price + ", totalAmount=" + totalAmount + ", gst=" + gst + ", date=" + date + "]";
 	}
 
 }

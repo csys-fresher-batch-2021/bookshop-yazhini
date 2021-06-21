@@ -6,7 +6,6 @@ public class RegistrationDetails {
 	private Long mobileno;
 	private String address;
 
-//create a constructor to the details
 	public String getName() {
 		return name;
 	}
