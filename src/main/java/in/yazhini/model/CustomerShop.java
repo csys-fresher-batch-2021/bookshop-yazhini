@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class CustomerShop {
 	public CustomerShop() {
-		// default constructor
+		// Default constructor
 	}
 
 	public Integer getBookId() {

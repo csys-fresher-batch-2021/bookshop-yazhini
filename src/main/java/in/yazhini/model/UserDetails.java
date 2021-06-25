@@ -2,8 +2,7 @@ package in.yazhini.model;
 
 public class UserDetails {
 	public UserDetails() {
-		//default constructor
-
+		// default constructor
 	}
 
 	@Override

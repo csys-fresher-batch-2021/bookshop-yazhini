@@ -51,21 +51,9 @@ public class BookDetails {
 		return noOfBooks;
 	}
 
-	public BookDetails(Integer bookId, String bookName, String authorName, Float bookPrice, Integer noOfBooks) {
-		super();
-		this.bookId = bookId;
-		this.bookName = bookName;
-		this.authorName = authorName;
-		this.bookPrice = bookPrice;
-		this.noOfBooks = noOfBooks;
-
-	}
-
-	// To declare the Booklist in purpose of retrieve
 	@Override
 	public String toString() {
 		return "BookDetails [bookId=" + bookId + ",bookName=" + bookName + ", authorName=" + authorName + ", bookPrice="
 				+ bookPrice + ", noOfBooks=" + noOfBooks + "]";
 	}
-
 }
