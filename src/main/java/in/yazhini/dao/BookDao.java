@@ -1,13 +1,11 @@
 package in.yazhini.dao;
 
 import java.sql.Connection;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import in.yazhini.exception.DBException;
 import in.yazhini.model.BookDetails;
 import in.yazhini.util.ConnectionUtil;
@@ -17,6 +15,14 @@ public class BookDao {
 		// default constructor
 	}
 
+	/**
+	 * Get AllBookList
+	 * 
+	 * @param BookDetails
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @return
+	 */
 	public static List<BookDetails> getBookList() throws DBException {
 		List<BookDetails> bookList = new ArrayList<>();
 		Connection connection = null;
@@ -34,7 +40,6 @@ public class BookDao {
 				String authorName = result.getString("authorName");
 				Float bookPrice = result.getFloat("bookPrice");
 				Integer noOfBooks = result.getInt("noOfBooks");
-
 				user.setBookId(bookId);
 				user.setBookName(bookName);
 				user.setAuthorName(authorName);
@@ -42,11 +47,9 @@ public class BookDao {
 				user.setNoOfBooks(noOfBooks);
 				bookList.add(user);
 			}
-
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 			throw new DBException("Unable to fetch BookDetails");
-
 		} finally {
 			ConnectionUtil.close1(connection, pst);
 		}
@@ -69,11 +72,9 @@ public class BookDao {
 			throws ClassNotFoundException {
 		Connection connection = null;
 		PreparedStatement pst = null;
-		// Get Connection
 		boolean inserted = false;
 		try {
 			connection = ConnectionUtil.getConnection();
-			// prepare data
 			String sql = "insert into BookDetails(bookname,authorname,bookprice,noofbooks) values (?,?,?,?)";
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, bookName);
@@ -81,14 +82,10 @@ public class BookDao {
 			pst.setFloat(3, bookPrice);
 			pst.setInt(4, noOfBooks);
 			pst.executeUpdate();
-			// Execute Query
-
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		} finally {
-
 			ConnectionUtil.close1(connection, pst);
-
 		}
 		return inserted;
 	}
@@ -97,58 +94,52 @@ public class BookDao {
 	 * Delete specific data in database
 	 * 
 	 * @param bookName
+	 * @param authorName
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
-	 * 
 	 */
-	public static boolean deleteBook( String bookName, String authorName) {
+	public static boolean deleteBook(String bookName, String authorName) {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		try {
-			// Get Connection
 			connection = ConnectionUtil.getConnection();
-			// prepare data
 			String sql = "DELETE FROM BookDetails WHERE bookname= ? and authorname=? ";
-
-			// Execute Query
 			pst = connection.prepareStatement(sql);
-			
 			pst.setString(1, bookName);
 			pst.setString(2, authorName);
 			pst.executeUpdate();
-
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 			throw new DBException("The Book Is Already Booked By the User So Unable to Delete Books");
 		} finally {
-
 			ConnectionUtil.close1(connection, pst);
 		}
 		return false;
-
 	}
+
+	/**
+	 * update specific data in database
+	 * 
+	 * @param bookName
+	 * @param bookQuantity
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
 	public static boolean updateBook(String bookName, Integer bookQuantity) {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		try {
-			// Get Connection
 			connection = ConnectionUtil.getConnection();
-			// prepare data
 			String sql = "update BookDetails set noofbooks=? WHERE bookName =? ;";
-
-			// Execute Query
 			pst = connection.prepareStatement(sql);
 			pst.setString(2, bookName);
 			pst.setInt(1, bookQuantity);
 			pst.executeUpdate();
-
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		} finally {
-
 			ConnectionUtil.close1(connection, pst);
 		}
 		return false;
-
 	}
 }

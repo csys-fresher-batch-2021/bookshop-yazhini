@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public class Shopping {
 	public Shopping() {
-		//default constructor
+		// default constructor
 	}
 
 	private Integer id;

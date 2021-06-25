@@ -2,7 +2,6 @@ package in.yazhini.servlet;
 
 import java.io.IOException;
 import java.util.List;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,16 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import in.yazhini.dao.BookingDAO;
 import in.yazhini.dao.UserDao;
 import in.yazhini.exception.DBException;
 import in.yazhini.model.Shopping;
 import in.yazhini.model.UserDetails;
 
-/**
- * Servlet implementation class AllbookingServlet
- */
 @WebServlet("/UserBookingsServlet")
 public class UserBookingsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -32,7 +27,6 @@ public class UserBookingsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int userId = 0;
-
 		try {
 			HttpSession session = request.getSession();
 			String userName = (String) session.getAttribute("LOGGED_IN_USER");
@@ -51,5 +45,4 @@ public class UserBookingsServlet extends HttpServlet {
 			response.sendRedirect("userBookingDetails.jsp?errorMessage=" + errorMessage);
 		}
 	}
-
 }

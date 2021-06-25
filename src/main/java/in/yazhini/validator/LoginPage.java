@@ -8,6 +8,14 @@ public class LoginPage {
 		// default constructor
 	}
 
+	/**
+	 * AdminLogin
+	 * 
+	 * @param userName
+	 * @param password
+	 * @param role
+	 * @return
+	 */
 //admin login to the standard input
 	public static boolean adminLogin(String userName, String password, String role) {
 		boolean isAdmin = false;
@@ -17,16 +25,22 @@ public class LoginPage {
 		return isAdmin;
 	}
 
+	/**
+	 * customerLogin
+	 * 
+	 * @param userName
+	 * @param password
+	 * @param role
+	 * @return
+	 */
 // customer login  to store the database
 	public static boolean customerLogin(String userName, String password) {
 		boolean isCustomer = false;
 		for (UserDetails user : UserDao.getUserList()) {
-
 			if (userName.trim().equals(user.getUserName()) && password.trim().equals(user.getPassword())) {
 				isCustomer = true;
 				break;
 			}
-
 		}
 		return isCustomer;
 	}

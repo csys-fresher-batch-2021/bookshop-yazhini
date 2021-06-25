@@ -8,7 +8,6 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-
 import in.yazhini.exception.DBException;
 import in.yazhini.model.BookDetails;
 import in.yazhini.model.Shopping;
@@ -20,9 +19,16 @@ public class AllBookingsDAO {
 		// Default Constructor
 	}
 
+	/**
+	 * Get AllOrderList With CustomerName
+	 * 
+	 * @param AllBookingList
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @return
+	 */
 	public static List<Shopping> getAllBookingList() throws DBException {
 		List<Shopping> allBookList = new ArrayList<>();
-		// Allbooking Details are stored in arraylist
 		Connection connection = null;
 		PreparedStatement pst = null;
 		ResultSet result = null;
@@ -34,7 +40,6 @@ public class AllBookingsDAO {
 			result = pst.executeQuery();
 			while (result.next()) {
 				Shopping shops = new Shopping();
-				// create a Object And stored the details in object
 				UserDetails user = new UserDetails();
 				BookDetails book = new BookDetails();
 				String username = result.getString("username");
@@ -47,7 +52,6 @@ public class AllBookingsDAO {
 				String emailId = result.getString("email_id");
 				String address = result.getString("address");
 				String status = result.getString("status");
-
 				user.setUserName(username);
 				shops.setUser(user);
 				book.setBookName(bookName);
@@ -62,17 +66,13 @@ public class AllBookingsDAO {
 				shops.setAddress(address);
 				shops.setStatus(status);
 				allBookList.add(shops);
-
 			}
-
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 			throw new DBException("Unable to fetch AllBookingDetails");
-
 		} finally {
 			ConnectionUtil.close1(connection, pst);
 		}
 		return allBookList;
 	}
-
 }

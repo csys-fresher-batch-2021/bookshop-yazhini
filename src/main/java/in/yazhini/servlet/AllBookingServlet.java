@@ -12,24 +12,15 @@ import in.yazhini.dao.AllBookingsDAO;
 import in.yazhini.exception.DBException;
 import in.yazhini.model.Shopping;
 
-/**
- * Servlet implementation class AllBookingServlet
- */
 @WebServlet("/AllBookingServlet")
 public class AllBookingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		try {
 			List<Shopping> allBookList = AllBookingsDAO.getAllBookingList();
-
 			request.setAttribute("AllBOOKING_DETAILS", allBookList);
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("AllBookings.jsp");
 			requestDispatcher.forward(request, response);
