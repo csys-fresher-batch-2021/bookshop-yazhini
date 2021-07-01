@@ -64,13 +64,12 @@
 					<th id="Quantity">QUANTITY</th>
 					<th id="TotalAmount">TOTALAMOUNT</th>
 					<th id="OrderedDate">ORDEREDDATE</th>
+					<th id="DeliveryDate">DELIVERYDATE</th>
 					<th id="Name">NAME</th>
 					<th id="MobileNo">MOBILE-NO</th>
 					<th id="Email-Id">EMAIL-ID</th>
 					<th id="Address">ADDRESS</th>
 					<th id="Status">STATUS</th>
-
-
 				</tr>
 			</thead>
 			<tbody>
@@ -82,6 +81,7 @@
 					UserDetails user = order.getUser();
 					BookDetails book = order.getBook();
 					String bookedDate = order.getOrderedDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:MM:SS"));
+					String deliveryDate = order.getDeliveryDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 				%>
 				<tr>
 					<td><%=i%></td>
@@ -90,13 +90,12 @@
 					<td><%=order.getQuantity()%></td>
 					<td><%=order.getTotalAmount()%></td>
 					<td><%=bookedDate%></td>
+					<td><%=deliveryDate%></td>
 					<td><%=order.getName()%></td>
 					<td><%=order.getMobileNo()%></td>
 					<td><%=order.getEmailId()%></td>
 					<td><%=order.getAddress()%></td>
 					<td><%=order.getStatus()%></td>
-
-
 				</tr>
 				<%
 				}

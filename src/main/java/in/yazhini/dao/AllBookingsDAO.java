@@ -1,10 +1,12 @@
 package in.yazhini.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +36,7 @@ public class AllBookingsDAO {
 		ResultSet result = null;
 		try {
 			connection = ConnectionUtil.getConnection();
-			String sql = "select u.username as username,B.bookname as book_name,bd.quantity,bd.totalamount,bd.ordered_date,bd.name,bd.mobileno,bd.email_id,bd.address,bd.status from users u,BookDetails B,booking_details bd\r\n"
+			String sql = "select u.username as username,B.bookname as book_name,bd.quantity,bd.totalamount,bd.ordered_date,bd.delivery_date,bd.name,bd.mobileno,bd.email_id,bd.address,bd.status from users u,BookDetails B,booking_details bd\r\n"
 					+ "where bd.user_id = u.id and bd.book_id = B.id order by ordered_date asc;";
 			pst = connection.prepareStatement(sql);
 			result = pst.executeQuery();
@@ -47,6 +49,7 @@ public class AllBookingsDAO {
 				Integer quantity = result.getInt("quantity");
 				Double totalamount = result.getDouble("totalamount");
 				Timestamp orderedDate = result.getTimestamp("ordered_date");
+				Date date = result.getDate("delivery_date");
 				String name = result.getString("name");
 				Long mobileno = result.getLong("mobileno");
 				String emailId = result.getString("email_id");
@@ -60,6 +63,8 @@ public class AllBookingsDAO {
 				shops.setTotalAmount(totalamount);
 				LocalDateTime orderDate = orderedDate.toLocalDateTime();
 				shops.setOrderedDate(orderDate);
+				LocalDate deliveryDate = date.toLocalDate();
+				shops.setDeliveryDate(deliveryDate);
 				shops.setName(name);
 				shops.setMobileNo(mobileno);
 				shops.setEmailId(emailId);

@@ -1,5 +1,6 @@
 package in.yazhini.model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Shopping {
@@ -57,6 +58,14 @@ public class Shopping {
 		this.orderedDate = orderedDate;
 	}
 
+	public LocalDate getDeliveryDate() {
+		return deliveryDate;
+	}
+
+	public void setDeliveryDate(LocalDate deliveryDate) {
+		this.deliveryDate = deliveryDate;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -102,6 +111,8 @@ public class Shopping {
 	private Integer quantity;
 	private Double totalAmount;
 	private LocalDateTime orderedDate;
+	private LocalDate deliveryDate;
+
 	private String name;
 	private Long mobileNo;
 	private String emailId;
@@ -111,8 +122,9 @@ public class Shopping {
 	@Override
 	public String toString() {
 		return "Shopping [id=" + id + ", user=" + user + ", book=" + book + ", quantity=" + quantity + ", totalAmount="
-				+ totalAmount + ", orderedDate=" + orderedDate + ", name=" + name + ", mobileNo=" + mobileNo
-				+ ", emailId=" + emailId + ", address=" + address + ", status=" + status + "]";
+				+ totalAmount + ", orderedDate=" + orderedDate + ", deliveryDate=" + deliveryDate + ", name=" + name
+				+ ", mobileNo=" + mobileNo + ", emailId=" + emailId + ", address=" + address + ", status=" + status
+				+ "]";
 	}
 
 }

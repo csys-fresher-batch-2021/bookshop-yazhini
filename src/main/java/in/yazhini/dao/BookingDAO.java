@@ -1,10 +1,12 @@
 package in.yazhini.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,8 +34,8 @@ public class BookingDAO {
 		PreparedStatement pst = null;
 		try {
 			connection = ConnectionUtil.getConnection();
-			String sql = " insert into booking_details(user_id,book_id,quantity,totalamount,ordered_date,name,mobileno,email_id,address)\r\n"
-					+ " values (?,?,?,?,?,?,?,?,?)";
+			String sql = " insert into booking_details(user_id,book_id,quantity,totalamount,ordered_date,delivery_date,name,mobileno,email_id,address)\r\n"
+					+ " values (?,?,?,?,?,?,?,?,?,?)";
 			pst = connection.prepareStatement(sql);
 			UserDetails user = new UserDetails();
 			BookDetails book = new BookDetails();
@@ -47,10 +49,12 @@ public class BookingDAO {
 			pst.setDouble(4, shop.getTotalAmount());
 			Timestamp orderedDate = Timestamp.valueOf(shop.getOrderedDate());
 			pst.setTimestamp(5, orderedDate);
-			pst.setString(6, shop.getName());
-			pst.setLong(7, shop.getMobileNo());
-			pst.setString(8, shop.getEmailId());
-			pst.setString(9, shop.getAddress());
+			Date deliveryDate = Date.valueOf(shop.getDeliveryDate());
+			pst.setDate(6, deliveryDate);
+			pst.setString(7, shop.getName());
+			pst.setLong(8, shop.getMobileNo());
+			pst.setString(9, shop.getEmailId());
+			pst.setString(10, shop.getAddress());
 			pst.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
@@ -74,7 +78,7 @@ public class BookingDAO {
 		ResultSet result = null;
 		try {
 			connection = ConnectionUtil.getConnection();
-			String sql = "select u.username as username,B.bookname as book_name,bd.quantity,bd.totalamount,bd.ordered_date,bd.name,bd.mobileno,bd.address,bd.status from users u,BookDetails B,booking_details bd\r\n"
+			String sql = "select u.username as username,B.bookname as book_name,bd.quantity,bd.totalamount,bd.ordered_date,bd.delivery_date,bd.name,bd.mobileno,bd.address,bd.status from users u,BookDetails B,booking_details bd\r\n"
 					+ "	where bd.user_id = u.id and bd.book_id = B.id and u.id = ?;";
 			pst = connection.prepareStatement(sql);
 			pst.setInt(1, userId);
@@ -88,6 +92,7 @@ public class BookingDAO {
 				Integer quantity = result.getInt("quantity");
 				Double totalamount = result.getDouble("totalamount");
 				Timestamp orderedDate = result.getTimestamp("ordered_date");
+				Date date = result.getDate("delivery_date");
 				String name = result.getString("name");
 				Long mobileno = result.getLong("mobileno");
 				String address = result.getString("address");
@@ -100,6 +105,8 @@ public class BookingDAO {
 				shop.setTotalAmount(totalamount);
 				LocalDateTime orderDate = orderedDate.toLocalDateTime();
 				shop.setOrderedDate(orderDate);
+				LocalDate deliveryDate = date.toLocalDate();
+				shop.setDeliveryDate(deliveryDate);
 				shop.setName(name);
 				shop.setMobileNo(mobileno);
 				shop.setAddress(address);
