@@ -8,15 +8,14 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 public class GsonUtil {
-		private GsonUtil(){
-			//DEFAULT Constructor
-		}
-		public static Gson create() {
-			 Gson gson = new GsonBuilder().setPrettyPrinting()
-					 .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
-					 .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
-				.registerTypeAdapter(LocalTime.class, new LocalTimeAdapter())
-				.create();
-			 return gson;
-		}
+	private GsonUtil() {
+		// DEFAULT Constructor
+	}
+
+	public static Gson create() {
+		return new GsonBuilder().setPrettyPrinting().registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
+				.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
+				.registerTypeAdapter(LocalTime.class, new LocalTimeAdapter()).create();
+
+	}
 }
