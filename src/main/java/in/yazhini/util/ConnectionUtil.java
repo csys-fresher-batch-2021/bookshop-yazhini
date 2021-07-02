@@ -21,7 +21,8 @@ public class ConnectionUtil {
 		connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 		return connection;
 	}
-   public static void close1(Connection con, PreparedStatement pst) {
+
+	public static void close1(Connection con, PreparedStatement pst) {
 		try {
 			if (pst != null) {
 				pst.close();

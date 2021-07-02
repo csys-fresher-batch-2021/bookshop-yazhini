@@ -8,6 +8,7 @@
 <%@page import="java.time.LocalDateTime"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.time.format.DateTimeFormatter"%>
+
 <!DOCTYPE html>
 <html lang=en>
 <head>
@@ -47,14 +48,7 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<h3>AllBooking Details:</h3>
-		<%
-		String infoMessage = request.getParameter("infoMessage");
-		if (infoMessage != null) {
-			out.println("<font color='green'>" + infoMessage + "</font>");
-		}
-		List<Shopping> allBookList = (List<Shopping>) request.getAttribute("AllBOOKING_DETAILS");
-		%>
-		<table class="table table-bordered" id="bill">
+		<table class="table table-bordered" id="userTable">
 			<caption>List of All Booking Details</caption>
 			<thead>
 				<tr>
@@ -73,35 +67,11 @@
 				</tr>
 			</thead>
 			<tbody>
-				<!-- Scriptlets(java code for display the list of book types) -->
-				<%
-				int i = 0;
-				for (Shopping order : allBookList) {
-					i++;
-					UserDetails user = order.getUser();
-					BookDetails book = order.getBook();
-					String bookedDate = order.getOrderedDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:MM:SS"));
-					String deliveryDate = order.getDeliveryDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-				%>
-				<tr>
-					<td><%=i%></td>
-					<td><%=user.getUserName()%></td>
-					<td><%=book.getBookName()%></td>
-					<td><%=order.getQuantity()%></td>
-					<td><%=order.getTotalAmount()%></td>
-					<td><%=bookedDate%></td>
-					<td><%=deliveryDate%></td>
-					<td><%=order.getName()%></td>
-					<td><%=order.getMobileNo()%></td>
-					<td><%=order.getEmailId()%></td>
-					<td><%=order.getAddress()%></td>
-					<td><%=order.getStatus()%></td>
-				</tr>
-				<%
-				}
-				%>
-			
+			</tbody>
 		</table>
 	</main>
+	<script src="assets/js/AllBookings.js">
+		
+	</script>
 </body>
 </html>
