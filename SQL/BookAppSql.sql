@@ -48,6 +48,7 @@ CREATE TABLE booking_details(
     quantity int NOT NULL,
     totalamount DOUBLE PRECISION NOT NULL,
     ordered_date timestamp NOT NULL,
+	delivery_date date NOT NULL,
 	name varchar(30) NOT NULL,
 	mobileno bigint NOT NULL,
 	email_id varchar (20) NOT NULL,
