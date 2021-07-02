@@ -22,7 +22,7 @@ public class ConnectionUtil {
 		return connection;
 	}
 
-	public static void close1(Connection con, PreparedStatement pst) {
+public static void close1(Connection con, PreparedStatement pst) {
 		try {
 			if (pst != null) {
 				pst.close();

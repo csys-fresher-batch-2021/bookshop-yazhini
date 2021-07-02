@@ -1,6 +1,7 @@
 package in.yazhini.servlet;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,6 +36,8 @@ public class AddDetailsServlet extends HttpServlet {
 			String bookName = request.getParameter("bookName");
 			double totalAmount = Double.parseDouble(request.getParameter("totalAmount"));
 			LocalDateTime orderedDate = LocalDateTime.now();
+			LocalDate date = LocalDate.now();
+			LocalDate deliveryDate = date.plusDays(6);
 			HttpSession session = request.getSession();
 			String userName = (String) session.getAttribute("LOGGED_IN_USER");
 			for (UserDetails user : UserDao.getUserList()) {
@@ -58,6 +61,7 @@ public class AddDetailsServlet extends HttpServlet {
 			shop.setQuantity(quantity);
 			shop.setTotalAmount(totalAmount);
 			shop.setOrderedDate(orderedDate);
+			shop.setDeliveryDate(deliveryDate);
 			shop.setName(name);
 			shop.setEmailId(emailId);
 			shop.setMobileNo(number);
