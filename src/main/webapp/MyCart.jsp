@@ -1,7 +1,10 @@
 <%@page import="java.util.List"%>
 <%@page import="in.yazhini.service.TestBookDetails"%>
+<%@page import="in.yazhini.model.CartDetails"%>
+<%@page import="in.yazhini.model.CartDetails"%>
 <%@page import="in.yazhini.model.BookDetails"%>
-<%@page import="in.yazhini.dao.BookDao"%>
+<%@page import="in.yazhini.model.UserDetails"%>
+<%@page import="in.yazhini.dao.CartDao"%>
 <!DOCTYPE html>
 <html lang=en>
 <head>
@@ -42,8 +45,6 @@
 	<main class="container-fluid">
 		<h3>Book Details:</h3>
 		<%
-		String loggedInUsername = (String) session.getAttribute("LOGGED_IN_USER");
-		String role = (String) session.getAttribute("ROLE");
 		String infoMessage = request.getParameter("infoMessage");
 		if (infoMessage != null) {
 			out.println("<font color='green'>" + infoMessage + "</font>");
@@ -52,53 +53,48 @@
 		if (errorMessage != null) {
 			out.println("<font color='red'>" + errorMessage + "</font>");
 		}
+		List<CartDetails> userCartList = (List<CartDetails>) request.getAttribute("CART_DETAILS");
 		%>
 		<table class="table table-bordered" id="bill">
-			<caption>List of Books</caption>
+			<caption>CartList</caption>
 			<thead>
 				<tr>
 					<th id="serialnumber">S.No</th>
+					<th id="UserName">UserName</th>
 					<th id="BookName">BookName</th>
 					<th id="AuthorName">AuthorName</th>
 					<th id="BookPrice">BookPrice</th>
 					<th id="NoOfBooks">NoOfBooks</th>
-					<%
-					if (loggedInUsername != null && role != null && role.equalsIgnoreCase("CUSTOMER")) {
-					%>
-					<th id="AddToCart">Cart</th>
-					<%
-					}
-					%>
-				</tr>
+					<th id="Order"> BuyNow</th>
+					<th id="Remove"> RemoveCart</th>
+					
+ 				</tr>
 			</thead>
 			<tbody>
 				<!-- Scriptlets(java code for display the list of book types) -->
 				<%
-				List<BookDetails> bookList = BookDao.getBookList();
 				int i = 0;
-				for (BookDetails books : bookList) {
+				for (CartDetails carts : userCartList) {
 					i++;
+					UserDetails user = carts.getUserDetails();
+					BookDetails book = carts.getBookDetails();
 				%>
 				<tr>
 					<td><%=i%></td>
-					<td><%=books.getBookName()%></td>
-					<td><%=books.getAuthorName()%></td>
-					<td>Rs.<%=books.getBookPrice()%>/-
+					<td><%=user.getUserName()%></td>
+					<td><%=book.getBookName()%></td>
+					<td><%=book.getAuthorName()%></td>
+					<td>Rs.<%=book.getBookPrice()%>/-
 					</td>
-					<td><%=books.getNoOfBooks()%></td>
-					<%
-					if (loggedInUsername != null && role != null && role.equalsIgnoreCase("CUSTOMER")) {
-					%>
-					<td><a
-						href="CartDetailsServlet?userName=<%=loggedInUsername%>
-				&bookId=<%=books.getBookId()%>"><button
-								class="btn-btn-primary">ADD TO CART</button></a></td>
-					<%
-					}
-					}
-					%>
+					<td><%=book.getNoOfBooks()%></td>
+					<td><a href="CustomerShop.jsp?bookName=<%=book.getBookName()%>"><button class="btn-btn-primary">BUY NOW</button></a></td>
+					<td><a href="DeleteCartServlet?bookName=<%=book.getBookName()%>"><button class="btn-btn-primary">REMOVE</button></a></td>
+					
+				<%
+				}
+				%>
 				</tr>
-		</table>
+			</table>
 	</main>
 </body>
 </html>
