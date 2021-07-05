@@ -13,26 +13,26 @@
 <html lang=en>
 <head>
 <style>
-#bill {
+#userTable {
 	font-family: Arial, Helvetica, sans-serif;
 	border-collapse: collapse;
 	width: 100%;
 }
 
-#bill td, #customers th {
+#userTable td, #customers th {
 	border: 1px solid #ddd;
 	padding: 8px;
 }
 
-#bill tr:nth-child(even) {
+#userTable tr:nth-child(even) {
 	background-color: #F2F2F2;
 }
 
-#bill tr:hover {
+#userTable tr:hover {
 	background-color: #ddd;
 }
 
-#bill th {
+#userTable th {
 	padding-top: 12px;
 	padding-bottom: 12px;
 	text-align: left;

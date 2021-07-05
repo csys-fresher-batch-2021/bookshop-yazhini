@@ -71,3 +71,23 @@ CREATE TABLE users(
 );
 select * from users;
 
+CREATE TABLE cart_details(
+	id serial primary key,
+	user_id int NOT NULL,
+	   CONSTRAINT cart_details_user_id_fkey FOREIGN KEY (user_id)
+       REFERENCES users (id),
+	book_id int NOT NULL,
+	   CONSTRAINT cart_details_book_id_fkey FOREIGN KEY (book_id)
+       REFERENCES bookdetails (id)
+    );
+	select * from cart_details;
+	insert into cart_details(user_id,book_id) values(1,70);
+	select u.username,b.bookname,b.authorname,b.bookprice,b.noofbooks from users u,bookdetails b,cart_details cd 
+	where u.id=cd.user_id and b.id=cd.book_id and u.id=1;
+	delete from cart_details where user_id=1;
+	
+
+
+
+
+

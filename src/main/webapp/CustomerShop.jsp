@@ -15,6 +15,7 @@
 		if (errorMessage != null) {
 			out.println("<font color='red'>" + errorMessage + "</font>");
 		}
+		String bookName = request.getParameter("bookName");
 		%>
 		<h3 class="card-title mt-3 text-center">!!! I do Belive Something
 			Very Magical Can Happen When You Read a Book !!!</h3>
@@ -29,8 +30,19 @@
 								style="font-size: 24px"></em>
 							</span>
 						</div>
+						<%
+						if (bookName == null) {
+						%>
 						<input name="bookName" placeholder=" BookName" type="text"
 							required />
+						<%
+						} else {
+						%>
+						<input name="bookName" value="<%=bookName%>"
+							placeholder=" BookName" type="text" readonly required />
+						<%
+						}
+						%>
 					</div>
 					<label for="noOfBooks"> Enter Quantity :</label>
 					<div class="form-group input-group">
