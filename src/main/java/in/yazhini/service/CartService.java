@@ -9,6 +9,9 @@ import in.yazhini.validator.CartValidator;
 
 
 public class CartService {
+	private CartService() {
+		
+	}
 
 	public static void addcart(int userId,int bookId) throws ServiceException {
 		try {

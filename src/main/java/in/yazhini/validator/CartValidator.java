@@ -9,6 +9,9 @@ import in.yazhini.model.CartDetails;
 import in.yazhini.model.UserDetails;
 
 public class CartValidator {
+	private CartValidator() {
+
+	}
 
 	public static void existsCart(int userId, int bookId) {
 		String userName = "";
@@ -28,12 +31,11 @@ public class CartValidator {
 			if (userName.equals(carts.getUserDetails().getUserName())
 					&& bookName.equals(carts.getBookDetails().getBookName())) {
 				throw new ValidatorException("The Book Is Already AddToCart");
-				
+
 			}
-		
+
 		}
 
 	}
-	
-}
 
+}

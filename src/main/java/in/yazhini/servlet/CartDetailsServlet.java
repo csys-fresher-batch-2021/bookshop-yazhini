@@ -23,12 +23,13 @@ public class CartDetailsServlet extends HttpServlet {
      * @see HttpServlet#HttpServlet()
      */
     public CartDetailsServlet() {
-  
+             super();
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int userId = 0;
 		try {
@@ -46,7 +47,6 @@ public class CartDetailsServlet extends HttpServlet {
 	} catch (ServiceException e) {
 		e.printStackTrace();
 		String errorMessage = e.getMessage();
-		System.out.println(e.getMessage());
 		response.sendRedirect("ListBookDetails.jsp?errorMessage=" + errorMessage);
 	}
 	}

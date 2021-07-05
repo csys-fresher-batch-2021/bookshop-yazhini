@@ -26,12 +26,13 @@ public class UserCartServlet extends HttpServlet {
      * @see HttpServlet#HttpServlet()
      */
     public UserCartServlet() {
-       
+       super();
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int userId = 0;
 		try {

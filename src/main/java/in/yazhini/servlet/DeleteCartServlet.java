@@ -27,16 +27,16 @@ public class DeleteCartServlet extends HttpServlet {
      * @see HttpServlet#HttpServlet()
      */
     public DeleteCartServlet() {
-       
+       super();
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String bookName = request.getParameter("bookName");
-		System.out.println(bookName);
 		int userId=0;
 		int bookId=0;
 		try {
@@ -52,7 +52,6 @@ public class DeleteCartServlet extends HttpServlet {
 					bookId = books.getBookId();
 				}
 			}
-			System.out.println(userId + "y"+ bookId);
 			CartService.deleteUser(userId,bookId);
 			String infoMessage = "Successfully Removed";
 			response.sendRedirect("UserCartServlet?infoMessage=" + infoMessage);

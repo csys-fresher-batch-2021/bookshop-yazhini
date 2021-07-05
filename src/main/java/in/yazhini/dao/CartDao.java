@@ -14,7 +14,11 @@ import in.yazhini.model.UserDetails;
 import in.yazhini.util.ConnectionUtil;
 
 public class CartDao {
-	public static void addCart(int userId,int bookId) {
+	private CartDao() {
+
+	}
+
+	public static void addCart(int userId, int bookId) {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		try {
@@ -27,12 +31,10 @@ public class CartDao {
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 			throw new DBException("Unable To AddDetails");
-			} finally {
+		} finally {
 			ConnectionUtil.close1(connection, pst);
 		}
 	}
-
-	
 
 	public static List<CartDetails> getUserCartList(int userId) {
 		List<CartDetails> cartList = new ArrayList<>();
@@ -41,23 +43,23 @@ public class CartDao {
 		ResultSet result = null;
 		try {
 			connection = ConnectionUtil.getConnection();
-			String sql ="select cd.id,u.username,b.bookname,b.authorname,b.bookprice,b.noofbooks from users u,bookdetails b,cart_details cd \r\n"
+			String sql = "select cd.id,u.username,b.bookname,b.authorname,b.bookprice,b.noofbooks from users u,bookdetails b,cart_details cd \r\n"
 					+ "	where u.id=cd.user_id and b.id=cd.book_id and u.id=?;";
 			pst = connection.prepareStatement(sql);
-			pst.setInt(1,userId);
+			pst.setInt(1, userId);
 			result = pst.executeQuery();
 			while (result.next()) {
 				CartDetails cart = new CartDetails();
-				UserDetails user=new UserDetails();
-				BookDetails book=new BookDetails();
-				
+				UserDetails user = new UserDetails();
+				BookDetails book = new BookDetails();
+
 				Integer cartId = result.getInt("id");
 				String userName = result.getString("userName");
 				String bookName = result.getString("bookName");
 				String authorName = result.getString("authorName");
 				Float bookPrice = result.getFloat("bookPrice");
 				Integer noOfBooks = result.getInt("noOfBooks");
-				
+
 				cart.setId(cartId);
 				user.setUserName(userName);
 				cart.setUserDetails(user);
@@ -84,22 +86,22 @@ public class CartDao {
 		ResultSet result = null;
 		try {
 			connection = ConnectionUtil.getConnection();
-			String sql ="select cd.id,u.username,b.bookname,b.authorname,b.bookprice,b.noofbooks from users u,bookdetails b,cart_details cd \r\n"
+			String sql = "select cd.id,u.username,b.bookname,b.authorname,b.bookprice,b.noofbooks from users u,bookdetails b,cart_details cd \r\n"
 					+ "	where u.id=cd.user_id and b.id=cd.book_id;";
 			pst = connection.prepareStatement(sql);
 			result = pst.executeQuery();
 			while (result.next()) {
 				CartDetails cart = new CartDetails();
-				UserDetails user=new UserDetails();
-				BookDetails book=new BookDetails();
-				
+				UserDetails user = new UserDetails();
+				BookDetails book = new BookDetails();
+
 				Integer cartId = result.getInt("id");
 				String userName = result.getString("userName");
 				String bookName = result.getString("bookName");
 				String authorName = result.getString("authorName");
 				Float bookPrice = result.getFloat("bookPrice");
 				Integer noOfBooks = result.getInt("noOfBooks");
-				
+
 				cart.setId(cartId);
 				user.setUserName(userName);
 				cart.setUserDetails(user);
@@ -118,7 +120,8 @@ public class CartDao {
 		}
 		return cartList;
 	}
-	public static void deleteCart(int userId,int bookId) {
+
+	public static void deleteCart(int userId, int bookId) {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		try {
